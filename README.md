@@ -16,16 +16,20 @@ JavaScript is a lightweight, cross-platform, object-oriented scripting language 
 - **Dynamic, interpreted, weakly typed language:** It is compiled on the fly, i.e. the code is evaluated and executed at runtime (a variable's type can change during runtime). Weakly typed means the datatypes of the variables are inferred automatically based on the type of value of value stored in it.
 
 #### **Syntax Parser:**
+
 A program that reads the code and determines what it does and if its grammar is valid. The programs like compilers and interpreters, read the code character by character and determine if the syntax is valid and then implementing that syntax in a way the computer can understand.
 
 #### **Lexical Environment:**
+
 Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
 
 #### **Execution Context:**
+
 A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
 
 #### **Global Environment and the Global Object:**
 
+Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine. By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
 
 
 
