@@ -33,10 +33,14 @@ Whenever code is run in JavaScript, it's run inside an execution context and its
 
 #### **Execution context - Creation and Hoisting:**
 
-_JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code,
-is because the execution context is created in two phases. The first phase is called the creation phase. In that phase we know that the global object is set up within memory i.e. `window` object and `this` within the global execution context. However, there's an outer environment that's created in that creation phase. The syntax parser runs through your code and
-recognizes the variables and functions that are created. So, a memory space is setup for those variables and functions and this step is called as __Hoisting__. It's not actually moving code to the top of the page. So those functions and variables exist in memory, where the function in its entirety is placed into memory space, where as for the variables, since JavaScript engine doesn't know its value until it starts executing its code, it puts a placeholder called undefined.
-All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
+_JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. 
+- The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code, is because the execution context is created in two phases.
+- The first phase is called the creation phase. In that phase we know that the global object is set up within memory i.e. `window` object and `this` within the global execution context.
+- However, there's an outer environment that's created in that creation phase.
+- The syntax parser runs through your code and recognizes the variables and functions that are created. So, a memory space is setup for those variables and functions and this step is called as __Hoisting__.
+- It's not actually moving code to the top of the page.
+- So those functions and variables exist in memory, where the function in its entirety is placed into memory space, where as for the variables, since JavaScript engine doesn't know its value until it starts executing its code, it puts a placeholder called `undefined`.
+- All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
 
 
 
