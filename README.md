@@ -31,7 +31,7 @@ A wrapper to help manage the code that is running. There are lots of lexical env
 
 Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine. By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
 
-#### **Execution context - Creation and Hoisting**
+#### **Execution context - Creation, Hoisting and Execution**
 
 _JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. 
 - The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code, is because the execution context is created in two phases.
@@ -41,9 +41,28 @@ _JavaScript Hoisting_ refers to the process whereby the interpreter appears to m
 - It's not actually moving code to the top of the page.
 - So those functions and variables exist in memory, where the function in its entirety is placed into memory space, where as for the variables, since JavaScript engine doesn't know its value until it starts executing its code, it puts a placeholder called `undefined`.
 - All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
+- The second phase is the execution phase, where the code is run line by line and the variables whose values were undefined in the creation phase are now assigned proper values in memory.
 
+#### **Function Invocation and Execution Stack**
 
+```
+function b() {}
 
+function a() {
+  b();
+}
 
+a();
+var d;
+```
+- When above code is put in a JavaScript file, a Global Execution Context will be created along with variable `this` and global object (`window` in case of browser) and attach these functions to it.
+- It will set up the memory space for them in the creation phase of the execution context.
+- However, when `a()` is invoked, a new execution context is created and placed on top of the execution stack.
+- So, anytime a function is executed or invoked in JavaScript, a new execution context is created (goes through creation phase similar to GEC) and put on the execution stack having it's own space for variables and functions including the `this` variable for that execution context.
+- So, when `b()` is invoked, yet another execution context is created and placed on top of `a`'s execution context. Here, since `b()` is called inside `a()`, `a`'s execution context is dependent on `b()`'s function completion. 
+- When `b()` finishes, then its removed from the execution stack, and same goes for `a()`.
+- The order of the code surrounding those functions lexically doesn't matter, e.g. if lexically `a` is above `b`, both of those functions are already in memory during the create phase of the initial GEC.
+
+#### **Function Context and Variable Environments**
 
 
