@@ -29,7 +29,7 @@ A wrapper to help manage the code that is running. There are lots of lexical env
 
 #### **Global Environment and the Global Object**
 
-Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine. By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
+Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine (here Base is the GEC). By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
 
 #### **Execution context - Creation, Hoisting and Execution**
 
