@@ -87,13 +87,20 @@ Variable environment is where the variables live that are created and how they r
 - So, every EC has its own variable environment, which is created a function is invoked including a reference to the outer environment.
 - So, similarly, this process occurs when `b()` is invoked. Here, `myVar` has value `undefined`.
 - Now, we have commented `myVar` declaration in `b`, and trying to print its value. When `b()` is invoked, `myVar` is 1, meaning its value is referred from the GEC (so outer environment of `b` is GEC). This is because, lexically `b` sits on top of the global environment (i.e. function declared at global level and not inside `a`).
-- This entire act of searching a variable in the chain of references to outer environments, is called the Scope Chain. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
+- This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
+- However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
 
+#### **Asynchronous Callbacks**
 
+Asynchronous simply means more than one at a time. But JavaScript, is synchronous, i.e. executes code a line at a time. However, click events or API calls are the callback functions that run when that event is complete or when that action is complete. Apart from the execution stack where execution contexts are being created and stacked on top of each other when functions are called, there is another list that sits inside the JavaScript engine called the __Event Queue__. This event queue is full of events, notifications of events, HTTP calls, etc.
 
+- When the browser, outside the JavaScript engine, has an event that the JS engine should be notified of, it gets placed on the queue. We can listen for that event and have that function handle that event. e.g. a click event.
+- At the same time, if an HTTP event occured due to the previous click event, this HTTP event will be added to the queue and will be executed after the click event is processed (as it is a Queue - FIFO).
+- The Event Queue is looked by the JS engine only after the execution stack is empty. So, any code written at global level will be executed first. And when the stack is empty, then JavaScript periodically looks at the event queue.
+- In case of events, it checks if a particular function should be run when that event was triggered. So it creates the execution context for that function and processes it.
 
-
-
+Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how
+_JavaScript handles asynchronous callbacks_.
 
 
 
