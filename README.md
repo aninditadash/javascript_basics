@@ -63,6 +63,37 @@ var d;
 - When `b()` finishes, then its removed from the execution stack, and same goes for `a()`.
 - The order of the code surrounding those functions lexically doesn't matter, e.g. if lexically `a` is above `b`, both of those functions are already in memory during the create phase of the initial GEC.
 
-#### **Function Context and Variable Environments**
+#### **Functions, Execution Context, Variable Environments and the Scope Chain**
+
+```
+function b() {
+  // var myVar;
+  console.log(myVar);
+}
+
+function a() {
+  var myVar = 2;
+  b();
+}
+
+var myVar = 1;
+a();
+```
+
+Variable environment is where the variables live that are created and how they relate to each other in memory. Let's find out the value of `myVar` at any point in time.
+
+- When above code is run, a GEC is created and bottom `myVar` (value = 1) is put into global memory space.
+- When `a()` is invoked, a new EC is created and `myVar` (value = 2) is put in that execution context's variable environment.
+- So, every EC has its own variable environment, which is created a function is invoked including a reference to the outer environment.
+- So, similarly, this process occurs when `b()` is invoked. Here, `myVar` has value `undefined`.
+- Now, we have commented `myVar` declaration in `b`, and trying to print its value. When `b()` is invoked, `myVar` is 1, meaning its value is referred from the GEC (so outer environment of `b` is GEC). This is because, lexically `b` sits on top of the global environment (i.e. function declared at global level and not inside `a`).
+- This entire act of searching a variable in the chain of references to outer environments, is called the Scope Chain. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
+
+
+
+
+
+
+
 
 
