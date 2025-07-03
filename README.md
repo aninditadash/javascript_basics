@@ -114,7 +114,7 @@ Primitive data types are the fundamental, predefined data types available in a p
 - undefined: A top-level property whose value is not defined.
 - null: Represents the intentional absence of a value (A special keyword denoting a null value).
 
-#### __Type Coercion vs Type Conversion__
+### __Type Coercion vs Type Conversion__
 
 Coercion in JavaScript refers to the automatic or implicit conversion of values from one data type to another. This process occurs when an operation or function requires a certain data type, but the provided value is of a different type. JavaScript, being a weakly-typed language, handles these conversions automatically to facilitate operations between different data types. 
 
@@ -137,3 +137,36 @@ let value = 0;
 let booleanValue = Boolean(value); // Explicitly converting a number to a boolean
 console.log(booleanValue); // Output: false
 ```
+
+#### **Common Issues of Type Coercion**
+
+__Comparing Different Data Types:__ Comparison Operator(= =), allows coercion due to which the unexpected conversions occur. To avoid this, we should use the strict equality(= = =) operator.
+
+```
+console.log(0 == "0");  // true
+console.log(0 == false);  // true
+console.log(" " + 0 == 0); // true
+```
+
+__Operations on null and undefined:__ Null and undefined behave unexpectedly.
+
+```
+console.log(null == undefined);   // true
+console.log(null === undefined);  // false
+console.log(null + 1); // 1
+console.log(false == 0); // true
+console.log(null == 0); // false, but Number(null) = 0 and Boolean(null) = false
+```
+
+__NaN Comparisons:__ NaN is not equal to itself, so checking with isNaN() is the best way to detect it.
+
+```
+console.log(NaN == NaN);  // false
+console.log(isNaN(NaN));  // true
+```
+
+
+
+
+
+
