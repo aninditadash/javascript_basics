@@ -140,7 +140,7 @@ console.log(booleanValue); // Output: false
 
 #### **Common Issues of Type Coercion**
 
-__Comparing Different Data Types:__ Comparison Operator(= =), allows coercion due to which the unexpected conversions occur. To avoid this, we should use the strict equality(= = =) operator.
+Comparing Different Data Types: Comparison Operator(= =), allows coercion due to which the unexpected conversions occur. To avoid this, we should use the strict equality(= = =) operator.
 
 ```
 console.log(0 == "0");  // true
@@ -148,7 +148,7 @@ console.log(0 == false);  // true
 console.log(" " + 0 == 0); // true
 ```
 
-__Operations on null and undefined:__ Null and undefined behave unexpectedly.
+Operations on null and undefined: Null and undefined behave unexpectedly.
 
 ```
 console.log(null == undefined);   // true
@@ -158,7 +158,7 @@ console.log(false == 0); // true
 console.log(null == 0); // false, but Number(null) = 0 and Boolean(null) = false
 ```
 
-__NaN Comparisons:__ NaN is not equal to itself, so checking with isNaN() is the best way to detect it.
+NaN Comparisons: NaN is not equal to itself, so checking with isNaN() is the best way to detect it.
 
 ```
 console.log(NaN == NaN);  // false
