@@ -13,7 +13,7 @@ JavaScript is a lightweight, cross-platform, object-oriented scripting language 
 - **Asynchronous:** As JavaScript is a single-threaded programming language, to execute the code faster, we can use asynchronous programming. For example, JavaScript can handle tasks like fetching data from servers without freezing the user interface.
 - **Rich Ecosystem:** There are numerous libraries and frameworks built on JavaScript, such as React, Angular, and Vue.js, which make development faster and more efficient.
 - **Server-side Support:** Node.js and frameworks like Express.js are widely used for server-side JavaScript, enabling full-stack development.
-- **Dynamic, interpreted, weakly typed language:** It is compiled on the fly, i.e. the code is evaluated and executed at runtime (a variable's type can change during runtime). Weakly typed means the datatypes of the variables are inferred automatically based on the type of value of value stored in it.
+- **Dynamic, interpreted, weakly typed language:** Dynamic Typing means that we don't tell the JavaScript engine what type of data a variable holds. Instead, it figures it out while the code is executing, so a single variable can hold different datatypes, at different times during code execution. Weakly typed means the datatypes of the variables are inferred automatically based on the type of value of value stored in it.
 
 #### **Syntax Parser**
 
@@ -102,5 +102,38 @@ Asynchronous simply means more than one at a time. But JavaScript, is synchronou
 Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how
 _JavaScript handles asynchronous callbacks_.
 
+#### **JavaScript Types**
 
+Primitive data types are the fundamental, predefined data types available in a programming language. They represent single, indivisible values and are the building blocks for more complex data structures. Common primitive types include integers, floating-point numbers, characters, booleans, and strings. Javascript has 7 primitive types:
 
+- String: A sequence of characters that represent a text value.
+- Number: Numerical values (integers and floating-point).
+- Bigint: Used for very large integers.
+- Boolean: true or false.
+- Symbol: A data type whose instances are unique and immutable.
+- undefined: A top-level property whose value is not defined.
+- null: Represents the intentional absence of a value (A special keyword denoting a null value).
+
+#### __Type Coercion vs Type Conversion__
+
+Coercion in JavaScript refers to the automatic or implicit conversion of values from one data type to another. This process occurs when an operation or function requires a certain data type, but the provided value is of a different type. JavaScript, being a weakly-typed language, handles these conversions automatically to facilitate operations between different data types. 
+
+__Implicit Coercion (Implicit Type casting):__ automatic conversion of one data type to another by JavaScript during operations, like comparison and arithmetic operations. It can lead to unexpected results if not handled properly.
+
+```
+let result = 5 + "9"; // The number 5 is implicitly coerced to the string "5"
+console.log(result); // Output: "59"
+```
+
+__Explicit Coercion (or Type Conversion):__ data type of the variables is converted from one type to another type manually using built-in functions or constructors.
+
+```
+let strNumber = "123";
+let num = Number(strNumber); // Explicitly converting a string to a number
+console.log(num); // Output: 123
+console.log(typeof num); // Output: "number"
+
+let value = 0;
+let booleanValue = Boolean(value); // Explicitly converting a number to a boolean
+console.log(booleanValue); // Output: false
+```
