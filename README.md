@@ -172,9 +172,21 @@ The memory lifecycle can be broken down into three main phases:
 2. Memory Usage: Once memory is allocated, the JavaScript engine uses it as the program runs. When you reference variables, objects, or functions, the engine accesses the memory where the data is stored.
 3. Memory Deallocation: When a variable, object, or function is no longer in use, the memory allocated to it should be freed. The JS engine automatically determines when memory is no longer needed and deallocates it.
 
-#### **Garbage Collection in JavaScript**
+### **Garbage Collection in JavaScript**
 
-JavaScript uses a process called garbage collection to manage memory. Garbage collection is the automatic process of identifying and freeing memory that is no longer in use by the program.
+Garbage collection is the automatic process of identifying and freeing memory that is no longer in use by the program.
+
+__References:__ GC algorithms rely mostly on the concept of reference. Within the context of memory management, an object is said to reference another object if the former has access to the latter (either implicitly or explicitly). For instance, a JavaScript object has a reference to its prototype (implicit reference) and to its properties values (explicit reference).
+
+__Reference-counting garbage collection:__ the JavaScript engine keeps track of how many references there are to an object. When the reference count reaches zero (i.e., no part of the program is referencing the object anymore), the object is eligible for garbage collection. There is a limitation when it comes to circular references, e.g. two objects are created with properties that reference one another, thus creating a cycle. After they go out of scope after function is completed, the reference-counting algorithm will not consider them reclaimable since each of the two objects has at least one reference pointing to them, resulting in neither of them being marked for garbage collection. Circular references are a common cause of memory leaks.
+
+__Mark-and-sweep algorithm:__ This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". This algorithm assumes the knowledge of a set of objects called roots. In JavaScript, the root is the global object. Periodically, the garbage collector will start from these roots, find all objects that are referenced from these roots, then all objects referenced from these, etc. Starting from the roots, the garbage collector will thus find all reachable objects and collect all non-reachable objects. Its effective in collecting circular references.
+
+#### **Data structures aiding memory management**
+
+WeakMaps and WeakSets: are data structures whose APIs closely mirror their non-weak counterparts: Map and Set. WeakMap allows you to maintain a collection of key-value pairs, while WeakSet allows you to maintain a collection of unique values, both with performant addition, deletion, and querying.
+
+WeakMap and WeakSet got the name from the concept of _weakly held_ values. If `x` is weakly held by `y`, it means that although you can access the value of `x` via `y`, the mark-and-sweep algorithm won't consider `x` as reachable if nothing else _strongly holds_ to it.
 
 ------
 
