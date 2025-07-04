@@ -23,7 +23,41 @@ A program that reads the code and determines what it does and if its grammar is 
 
 Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
 
-#### **Execution Context**
+### **How code is parsed and compiled in Javascript**
+
+##### __Interpreter:__
+An interpreter translates code written in a high-level programming language into machine code line-by-line as the code runs.
+
+##### __Compiler:__ 
+A compiler translates code from a high-level programming language into machine code before the program runs.
+
+##### __JIT Compiler:__ 
+A JIT compiler converts code into byte code first. Then, at runtime, it changes the byte code into machine-readable code, which makes the program run faster.
+
+##### __Abstract Syntax Tree (AST):__
+The AST is a hierarchical, tree-like representation of the code's structure, reflecting its syntax and relationships between different elements.
+
+#### __Byte Code vs Machine Code (Object code):__
+Byte code is an intermediate code between the source code and machine code. It is a low-level code that is the result of the compilation of a source code which is written in a high-level language.
+-  Byte code is considered as the intermediate-level code and Machine Code as low-level code.
+-  Byte code is a non-runnable code generated after compilation of source code and it relies on an interpreter to get executed.
+-  Machine code is a set of instructions in machine language or in binary format and is directly executed by CPU.
+- Byte code is platform-independent as it is dependent on the virtual machine and the system having a virtual machine can be executed irrespective of the platform.
+- Machine code is not platform independent because the object code of one platform can not be run on the different OS. 
+
+JavaScript is mainly interpreted, but modern JavaScript engines, like V8 in Google Chrome, use JIT (Just-In-Time) compilation to boost performance. They convert JavaScript code into optimized machine code right before it runs. This mix of interpretation and JIT compilation makes JavaScript fast and versatile for web applications.
+
+- The engine first breaks down the raw JavaScript code into a stream of meaningful "tokens."
+- The tokens are then fed to a parser, which analyzes their grammatical structure and builds an AST, which also identifies syntax errors.
+- JS engine often uses an interpreter to convert the AST into an intermediate representation called bytecode. This bytecode is a lower-level, platform-independent representation of the code, designed for efficient execution.
+- Modern JavaScript engines employ JIT compilation to optimize performance. As the bytecode is executed by the interpreter, the JIT compiler identifies "hot" code sections (frequently executed parts) and compiles them into highly optimized, platform-specific machine code.
+- The compiled machine code (or interpreted bytecode for less frequently executed parts) is then executed by the JavaScript virtual machine.
+
+https://daily.dev/blog/javascript-interpreter-basics-for-developers
+
+---------
+
+### **Execution Context**
 
 A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
 
@@ -90,7 +124,7 @@ Variable environment is where the variables live that are created and how they r
 - This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
 - However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
 
-#### **Asynchronous Callbacks**
+### **Asynchronous Callbacks**
 
 Asynchronous simply means more than one at a time. But JavaScript, is synchronous, i.e. executes code a line at a time. However, click events or API calls are the callback functions that run when that event is complete or when that action is complete. Apart from the execution stack where execution contexts are being created and stacked on top of each other when functions are called, there is another list that sits inside the JavaScript engine called the __Event Queue__. This event queue is full of events, notifications of events, HTTP calls, etc.
 
@@ -102,7 +136,7 @@ Asynchronous simply means more than one at a time. But JavaScript, is synchronou
 Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how
 _JavaScript handles asynchronous callbacks_.
 
-#### **JavaScript Types**
+### **JavaScript Types**
 
 Primitive data types are the fundamental, predefined data types available in a programming language. They represent single, indivisible values and are the building blocks for more complex data structures. Common primitive types include integers, floating-point numbers, characters, booleans, and strings. Javascript has 7 primitive types:
 
