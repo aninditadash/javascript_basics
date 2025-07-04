@@ -25,17 +25,13 @@ Where something sits physically in the code we write. Lexical means having to do
 
 ### **How code is parsed and compiled in Javascript**
 
-##### __Interpreter:__
-An interpreter translates code written in a high-level programming language into machine code line-by-line as the code runs.
+__Interpreter:__ An interpreter translates code written in a high-level programming language into machine code line-by-line as the code runs.
 
-##### __Compiler:__ 
-A compiler translates code from a high-level programming language into machine code before the program runs.
+__Compiler:__  A compiler translates code from a high-level programming language into machine code before the program runs.
 
-##### __JIT Compiler:__ 
-A JIT compiler converts code into byte code first. Then, at runtime, it changes the byte code into machine-readable code, which makes the program run faster.
+__JIT Compiler:__ A JIT compiler converts code into byte code first. Then, at runtime, it changes the byte code into machine-readable code, which makes the program run faster.
 
-##### __Abstract Syntax Tree (AST):__
-The AST is a hierarchical, tree-like representation of the code's structure, reflecting its syntax and relationships between different elements.
+__Abstract Syntax Tree (AST):__ The AST is a hierarchical, tree-like representation of the code's structure, reflecting its syntax and relationships between different elements.
 
 #### __Byte Code vs Machine Code (Object code):__
 Byte code is an intermediate code between the source code and machine code. It is a low-level code that is the result of the compilation of a source code which is written in a high-level language.
