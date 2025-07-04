@@ -165,6 +165,45 @@ console.log(NaN == NaN);  // false
 console.log(isNaN(NaN));  // true
 ```
 
+#### **Variable Declarations in Javascript**
+
+##### __var__
+Declares variables with function or global scope and allows re-declaration and updates within the same scope. 
+- It can be declared without initialization.
+- It can be accessed without initialization as its default value is "undefined" (except in _strict mode_).
+- These variables are hoisted.
+
+##### __let (ES6)__
+Declares variables with block scope, allowing updates but not re-declaration within the same block. 
+- It can be declared without initialization.
+- It cannot be accessed without initialization otherwise it will give 'referenceError'.
+- These variables are hoisted but stay in the temporal dead zone until the initialization.
+
+##### __const (ES6)__
+Declares block-scoped variables that cannot be reassigned after their initial assignment. 
+- It cannot be declared without initialization.
+- It cannot be accessed without initialization, as it cannot be declared without initialization.
+- These variables are hoisted but stays in the temporal dead zone until the initialization.
+- For reference types
+
+#### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
+
+A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible until its initialization with a value is completed. A block is a pair of braces `{...}` used to group multiple statements. Only applicable to _let_ and _const_.
+
+```
+{
+  // myVar’s TDZ starts here (at the beginning of this block’s local scope)
+  // myVar’s TDZ continues here
+  console.log(myVar); // returns ReferenceError because myVar’s TDZ continues here
+  let myVar = 1; // myVar’s TDZ ends here
+  // myVar’s TDZ does not exist here
+  console.log(myVar); // returns 1 because myVar’s TDZ does not exist here
+}
+```
+- TDZ begins when the execution enters the block or scope where a let or const variable is declared.
+- TDZ for a specific variable ends when the JS engine encounters its declaration and initializes it with a value.
+- If a variable declared with let or const is accessed before its initialization within its scope, a ReferenceError will be thrown.
+- Its not applicable to var as they are hoisted and initialized to undefined at the beginning of their function scope, regardless of where they are declared. 
 
 
 
