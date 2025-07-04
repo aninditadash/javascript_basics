@@ -175,19 +175,19 @@ console.log(isNaN(NaN));  // true
 
 ### **Variable Declarations in Javascript**
 
-##### __var__
+#### __var__
 Declares variables with function or global scope and allows re-declaration and updates within the same scope. 
 - It can be declared without initialization.
 - It can be accessed without initialization as its default value is "undefined" (except in _strict mode_).
 - These variables are hoisted.
 
-##### __let (ES6)__
+#### __let (ES6)__
 Declares variables with block scope, allowing updates but not re-declaration within the same block. 
 - It can be declared without initialization.
 - It cannot be accessed without initialization otherwise it will give 'referenceError'.
 - These variables are hoisted but stay in the temporal dead zone until the initialization.
 
-##### __const (ES6)__
+#### __const (ES6)__
 Declares block-scoped variables that cannot be reassigned after their initial assignment. 
 - It cannot be declared without initialization.
 - It cannot be accessed without initialization, as it cannot be declared without initialization.
