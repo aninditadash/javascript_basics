@@ -163,8 +163,18 @@ let undefined = 1;
 ------
 
 ### **Memory Management in JavaScript**
-JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection).
+JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection). 
+The stack is used for static memory allocation (primitives, function calls), while the heap is used for dynamic memory allocation (objects, arrays).
 
+The memory lifecycle can be broken down into three main phases:
+
+1. Memory Allocation: When you create a variable, object, or function, the engine allocates memory to store the value. Primitives data types are stored directly in memory, i.e. typically allocated memory on the stack. For reference data types, the reference to the data is stored in memory, and the actual data is often stored on the heap.
+2. Memory Usage: Once memory is allocated, the JavaScript engine uses it as the program runs. When you reference variables, objects, or functions, the engine accesses the memory where the data is stored.
+3. Memory Deallocation: When a variable, object, or function is no longer in use, the memory allocated to it should be freed. The JS engine automatically determines when memory is no longer needed and deallocates it.
+
+#### **Garbage Collection in JavaScript**
+
+JavaScript uses a process called garbage collection to manage memory. Garbage collection is the automatic process of identifying and freeing memory that is no longer in use by the program.
 
 ------
 
