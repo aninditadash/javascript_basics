@@ -132,6 +132,8 @@ Asynchronous simply means more than one at a time. But JavaScript, is synchronou
 Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how
 _JavaScript handles asynchronous callbacks_.
 
+-----
+
 ### **JavaScript Types**
 
 Primitive data types are the fundamental, predefined data types available in a programming language. They represent single, indivisible values and are the building blocks for more complex data structures. Common primitive types include integers, floating-point numbers, characters, booleans, and strings. Javascript has 7 primitive types:
@@ -149,8 +151,16 @@ When trying to assign a value to a JS keyword gives `Syntax Error`.
 
 ```
 let undefined = 1;
-// Uncaught SyntaxError: Identifier 'undefined' has already been declared
+// Uncaught SyntaxError: Identifier 'undefined' has already been declared.
 ```
+
+#### __Primitive vs Reference values__
+
+- Primitive types represent single, simple values and are immutable, meaning their value cannot be changed after creation. When a primitive value is assigned to a variable, the actual value is stored directly in that variable's memory location (typically on the call stack). They are _accessed by Value_. When a primitive variable is copied, a new, independent copy of the value is created. Changes to the copied variable do not affect the original.
+- An object is a value in memory which is possibly referenced by an identifier. In JavaScript, objects are the only mutable values. Functions are, in fact, also objects with the additional capability of being callable. Mutable means their properties or elements can be modified after creation. When a reference value is assigned to a variable, the variable stores a reference (a memory address) to the actual object, which is stored in a separate area of memory (typically the heap). These variables are _accessed by Reference_.
+- When a reference variable is copied, only the reference (memory address) is copied, not the object itself. This means both the original and copied variables point to the same underlying object in memory. Changes made to the object through one variable will be reflected when accessing the object through the other variable.
+
+------
 
 ### __Type Coercion vs Type Conversion__
 
@@ -222,7 +232,7 @@ Declares block-scoped variables that cannot be reassigned after their initial as
 - It cannot be declared without initialization.
 - It cannot be accessed without initialization, as it cannot be declared without initialization.
 - These variables are hoisted but stays in the temporal dead zone until the initialization.
-- For reference types (objects, arrays, functions) creates an immutable binding to the reference (mutable value), not an immutable value. _Immutable Reference means the variable declared cannot be reassigned to a different reference, mutable value means properties of the referenced object or array can be modified_.
+- For reference types (objects, arrays, functions) creates an immutable binding to the reference or the memory address (mutable value), not an immutable value. _Immutable Reference means the variable declared cannot be reassigned to a different reference, mutable value means properties of the referenced object or array can be modified_.
 
 #### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
 
