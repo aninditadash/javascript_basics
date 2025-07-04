@@ -321,6 +321,37 @@ Namespace: A container to hold variables and functions. Typically used to keep v
 
 ### **Functions**
 
+#### **Function declarations**
+
+A function definition (also called a function declaration, or function statement) consists of the function keyword, followed by the name of the function, list of parameters to the function. 
+
+- Parameters are essentially passed to functions by value — so if the code within the body of a function assigns a completely new value to a parameter that was passed to the function, the change is not reflected globally or in the code which called that function.
+- When you pass a reference type as a parameter, if the function changes that variable's properties, that change is visible outside the function.
+- Function declarations and expressions can be nested, which forms a scope chain.
+- Function declarations are hoisted.
+- `this` inside a F.D. will refer to the `window` object.
+
+#### **Function expressions**
+
+Functions can also be created by a function expression. Such a function can be anonymous, it does not have to have a name. A function expression always results in a value. Function expressions cant be hoisted, as the variable will have an initial value of undefined. Here, also `this` inside a F.E. will refer to the `window` object.
+
+#### **Immediately Invoked Function Expressions (IIFE)**
+
+An IIFE is a code pattern that directly calls a function defined as an expression. Instead of saving the function in a variable, the function is immediately invoked. 
+
+
+```
+const value = (function () {
+  // Do something
+  return someValue;
+})();
+```
+
+#### **Arrow Functions**
+
+Arrow functions are a concise syntax for writing functions, introduced in ES6, and they do not bind their own `this` context. Here, JavaScript sets the `this` lexically. This means that the arrow function doesn't create its own execution context but inherits the `this` from the outer function where the arrow function is defined.
+
+
 #### **Functions are Objects**
 
 First-class Function: A programming language is said to have First-class functions when _functions in that language are treated like any other variable_. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
@@ -328,4 +359,4 @@ First-class Function: A programming language is said to have First-class functio
 In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties. They can also have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called.
 
 
-
+Spread operator
