@@ -114,6 +114,14 @@ Primitive data types are the fundamental, predefined data types available in a p
 - undefined: A top-level property whose value is not defined.
 - null: Represents the intentional absence of a value (A special keyword denoting a null value).
 
+##### __Note:__
+When trying to assign a value to a JS keyword gives `Syntax Error`.
+
+```
+let undefined = 1;
+// Uncaught SyntaxError: Identifier 'undefined' has already been declared
+```
+
 ### __Type Coercion vs Type Conversion__
 
 Coercion in JavaScript refers to the automatic or implicit conversion of values from one data type to another. This process occurs when an operation or function requires a certain data type, but the provided value is of a different type. JavaScript, being a weakly-typed language, handles these conversions automatically to facilitate operations between different data types. 
@@ -165,7 +173,7 @@ console.log(NaN == NaN);  // false
 console.log(isNaN(NaN));  // true
 ```
 
-#### **Variable Declarations in Javascript**
+### **Variable Declarations in Javascript**
 
 ##### __var__
 Declares variables with function or global scope and allows re-declaration and updates within the same scope. 
@@ -184,7 +192,7 @@ Declares block-scoped variables that cannot be reassigned after their initial as
 - It cannot be declared without initialization.
 - It cannot be accessed without initialization, as it cannot be declared without initialization.
 - These variables are hoisted but stays in the temporal dead zone until the initialization.
-- For reference types
+- For reference types (objects, arrays, functions) creates an immutable binding to the reference (mutable value), not an immutable value. _Immutable Reference means the variable declared cannot be reassigned to a different reference, mutable value means properties of the referenced object or array can be modified_.
 
 #### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
 
@@ -205,6 +213,8 @@ A temporal dead zone (TDZ) is the area of a block where a variable is inaccessib
 - If a variable declared with let or const is accessed before its initialization within its scope, a ReferenceError will be thrown.
 - Its not applicable to var as they are hoisted and initialized to undefined at the beginning of their function scope, regardless of where they are declared. 
 
+#### **Strict Mode**
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 
 
 
