@@ -129,8 +129,7 @@ Asynchronous simply means more than one at a time. But JavaScript, is synchronou
 - The Event Queue is looked by the JS engine only after the execution stack is empty. So, any code written at global level will be executed first. And when the stack is empty, then JavaScript periodically looks at the event queue.
 - In case of events, it checks if a particular function should be run when that event was triggered. So it creates the execution context for that function and processes it.
 
-Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how
-_JavaScript handles asynchronous callbacks_.
+Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how _JavaScript handles asynchronous callbacks_.
 
 -----
 
@@ -240,6 +239,7 @@ NaN Comparisons: NaN is not equal to itself, so checking with isNaN() is the bes
 console.log(NaN == NaN);  // false
 console.log(isNaN(NaN));  // true
 ```
+---------
 
 ### **Variable Declarations in Javascript**
 
@@ -284,6 +284,48 @@ A temporal dead zone (TDZ) is the area of a block where a variable is inaccessib
 #### **Strict Mode**
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 
+---------
+
+## **Objects and Functions in Javascript**
+
+JavaScript is designed on an object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
+
+### **Creating new objects**
+
+Using object initializers: Also called object literals. Object initializers are expressions, and each object initializer results in a new object being created whenever the statement in which it appears is executed. Identical object initializers create distinct objects that do not compare to each other as equal.
+
+```
+const obj = {
+  name: "Anne", // property name may be an identifier
+  // This is a method called 'greet'
+  greet: function() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+};
+```
+#### **Using a constructor function**
+
+Define the object type by writing a constructor function. Create an instance of the object with new.
+```
+function Person(name) {
+  this.name = name;
+  this.greet = function() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+const person1 = new Person("Alice");
+const person2 = new Person("Bob");
+```
+
+Namespace: A container to hold variables and functions. Typically used to keep variables and functions with the same name separate. JS does not have the concept of namespaces.
+
+### **Functions**
+
+#### **Functions are Objects**
+
+First-class Function: A programming language is said to have First-class functions when _functions in that language are treated like any other variable_. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
+
+In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties. They can also have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called.
 
 
 
