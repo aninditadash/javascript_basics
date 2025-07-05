@@ -348,7 +348,7 @@ console.log(square(2));  // 4
 
 ### **Function expressions**
 
-Functions can also be created by a function expression. Such a function can be anonymous, it does not have to have a name. A function expression always results in a value. Function expressions cant be hoisted, as the variable will have an initial value of undefined. Here, also `this` inside a F.E. will refer to the `window` object.
+Functions can also be created by a function expression. Such a function can be _anonymous_, _it does not have to have a name_. A function expression always results in a value. Function expressions cant be hoisted, as the variable will have an initial value of undefined. Here, also `this` inside a F.E. will refer to the `window` object.
 
 ```
 const square = function (number) {
@@ -359,7 +359,7 @@ console.log(square(2));  // 4
 
 ### **Immediately Invoked Function Expressions (IIFE)**
 
-An IIFE is a code pattern that directly calls a function defined as an expression. Instead of saving the function in a variable, the function is immediately invoked. 
+An IIFE is a code pattern that directly calls a function defined as an expression. Instead of saving the function in a variable, the function is immediately invoked. They are executed immediately after they are defined.
 
 ```
 const num = 2;
@@ -368,10 +368,14 @@ const square = (function (number) {
 })(num);
 console.log(square);  // 4
 ```
+
 #### **How IIFEs Promote Safe Code**
 
-
-
+- Contribute to "safe code" primarily by creating a private scope, which helps prevent global scope pollution and potential naming conflicts.
+- Allow for the encapsulation of related code within a self-contained unit.
+- Help create closures in JS.
+- Used to create private and  public variables and methods.
+- An async function expression can be used as an IIFE which runs as soon as it is defined.
 
 ### **Arrow Functions**
 
