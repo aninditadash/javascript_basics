@@ -239,9 +239,8 @@ NaN Comparisons: NaN is not equal to itself, so checking with isNaN() is the bes
 console.log(NaN == NaN);  // false
 console.log(isNaN(NaN));  // true
 ```
----------
 
-### **Variable Declarations in Javascript**
+## **Variable Declarations in Javascript**
 
 #### __var__
 Declares variables with function or global scope and allows re-declaration and updates within the same scope. 
@@ -283,8 +282,6 @@ A temporal dead zone (TDZ) is the area of a block where a variable is inaccessib
 
 #### **Strict Mode**
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
-
----------
 
 ## **Objects and Functions in Javascript**
 
@@ -411,5 +408,12 @@ const multiply = (multiplier, ...theArgs) => {
 const arr = multiply(2, 1, 2, 3);
 console.log(arr); // [2, 4, 6]
 ```
+
+### **Closures in JavaScript** 
+
+In JavaScript, a closure is the combination of a function and the lexical environment within which that function was declared. This means that a closure allows an inner function to access and remember the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing. 
+
+
+
 
 Spread operator
