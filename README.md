@@ -413,7 +413,11 @@ console.log(arr); // [2, 4, 6]
 
 In JavaScript, a closure is the combination of a function and the lexical environment within which that function was declared. This means that a closure allows an inner function to access and remember the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing. 
 
-
+- Closures are not functions themselves, but rather the environment that a function "remembers" when it is created.
+- Every function in JavaScript has an associated closure, which is created at the time the function is defined. This closure allows the function to "remember" the variables in its scope at the time of its creation, even if those variables are outside the function's execution context.
+- Closures are rely on _lexical scoping_, meaning that a function’s scope is determined by where the function is defined, not where it is executed. This allows inner functions to access variables from their outer function.
+- Closures allow a function to keep variables hidden and only accessible within that function.
+- However, excessive use of closures may retain unnecessary references to variables, causing memory issues due to larger memory usage.
 
 
 Spread operator
