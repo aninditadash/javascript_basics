@@ -343,7 +343,7 @@ A function definition (also called a function declaration, or function statement
 function square(number) {
   return number * number;
 }
-console.log(square(2));  // 4
+console.log(square(2)); // 4
 ```
 
 ### **Function expressions**
@@ -354,7 +354,7 @@ Functions can also be created by a function expression. Such a function can be _
 const square = function (number) {
   return number * number;
 };
-console.log(square(2));  // 4
+console.log(square(2)); // 4
 ```
 
 ### **Immediately Invoked Function Expressions (IIFE)**
@@ -366,7 +366,7 @@ const num = 2;
 const square = (function (number) {
   return number * number;
 })(num);
-console.log(square);  // 4
+console.log(square); // 4
 ```
 
 #### **How IIFEs Promote Safe Code**
@@ -387,8 +387,29 @@ const square = (number) => number * number;
 
 ### **Function Parameters**
 
+There are two kinds of parameter syntax: default parameters and rest parameters.
 
+#### **Default parameters**
 
+In JavaScript, parameters of functions default to undefined. However, in some situations we can set it to a different default value using default parameters.
 
+```
+const multiply = (a, b = 1) => a * b;
+
+console.log(multiply(5)); // 5
+```
+
+#### **Rest parameters**
+
+The rest parameter syntax allows us to represent an indefinite number of arguments as an array.
+
+```
+const multiply = (multiplier, ...theArgs) => {
+  return theArgs.map((x) => multiplier * x);
+};
+
+const arr = multiply(2, 1, 2, 3);
+console.log(arr); // [2, 4, 6]
+```
 
 Spread operator
