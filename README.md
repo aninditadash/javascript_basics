@@ -298,7 +298,9 @@ In JavaScript, functions are first-class objects, because they can be passed to 
 
 ### **Creating new objects**
 
-Using object initializers: Also called object literals. Object initializers are expressions, and each object initializer results in a new object being created whenever the statement in which it appears is executed. Identical object initializers create distinct objects that do not compare to each other as equal.
+#### **Using object initializers:** 
+
+Also called object literals. Object initializers are expressions, and each object initializer results in a new object being created whenever the statement in which it appears is executed. Identical object initializers create distinct objects that do not compare to each other as equal.
 
 ```
 const obj = {
@@ -337,25 +339,49 @@ A function definition (also called a function declaration, or function statement
 - Function declarations are hoisted.
 - `this` inside a F.D. will refer to the `window` object.
 
+```
+function square(number) {
+  return number * number;
+}
+console.log(square(2));  // 4
+```
+
 ### **Function expressions**
 
 Functions can also be created by a function expression. Such a function can be anonymous, it does not have to have a name. A function expression always results in a value. Function expressions cant be hoisted, as the variable will have an initial value of undefined. Here, also `this` inside a F.E. will refer to the `window` object.
+
+```
+const square = function (number) {
+  return number * number;
+};
+console.log(square(2));  // 4
+```
 
 ### **Immediately Invoked Function Expressions (IIFE)**
 
 An IIFE is a code pattern that directly calls a function defined as an expression. Instead of saving the function in a variable, the function is immediately invoked. 
 
+```
+const num = 2;
+const square = (function (number) {
+  return number * number;
+})(num);
+console.log(square);  // 4
+```
+#### **How IIFEs Promote Safe Code**
 
-```
-const value = (function () {
-  // Do something
-  return someValue;
-})();
-```
+
+
 
 ### **Arrow Functions**
 
 Arrow functions are a concise syntax for writing functions, introduced in ES6, and they do not bind their own `this` context. Here, JavaScript sets the `this` lexically. This means that the arrow function doesn't create its own execution context but inherits the `this` from the outer function where the arrow function is defined.
+
+```
+const square = (number) => number * number;
+```
+
+### **Function Parameters**
 
 
 
