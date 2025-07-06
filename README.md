@@ -15,11 +15,11 @@ JavaScript is a lightweight, cross-platform, object-oriented scripting language 
 - **Server-side Support:** Node.js and frameworks like Express.js are widely used for server-side JavaScript, enabling full-stack development.
 - **Dynamic, interpreted, weakly typed language:** Dynamic Typing means that we don't tell the JavaScript engine what type of data a variable holds. Instead, it figures it out while the code is executing, so a single variable can hold different datatypes, at different times during code execution. Weakly typed means the datatypes of the variables are inferred automatically based on the type of value of value stored in it.
 
-### **Syntax Parser**
+#### **Syntax Parser**
 
 A program that reads the code and determines what it does and if its grammar is valid. The programs like compilers and interpreters, read the code character by character and determine if the syntax is valid and then implementing that syntax in a way the computer can understand.
 
-### **Lexical Environment**
+#### **Lexical Environment**
 
 Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
 
@@ -56,11 +56,11 @@ https://daily.dev/blog/javascript-interpreter-basics-for-developers
 
 A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
 
-### **Global Environment and the Global Object**
+#### **Global Environment and the Global Object**
 
 Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine (here Base is the GEC). By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
 
-### **Execution context - Creation, Hoisting and Execution**
+#### **Execution context - Creation, Hoisting and Execution**
 
 _JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. 
 - The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code, is because the execution context is created in two phases.
@@ -72,7 +72,7 @@ _JavaScript Hoisting_ refers to the process whereby the interpreter appears to m
 - All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
 - The second phase is the execution phase, where the code is run line by line and the variables whose values were undefined in the creation phase are now assigned proper values in memory.
 
-### **Function Invocation and Execution Stack**
+#### **Function Invocation and Execution Stack**
 
 ```
 function b() {}
@@ -92,7 +92,7 @@ var d;
 - When `b()` finishes, then its removed from the execution stack, and same goes for `a()`.
 - The order of the code surrounding those functions lexically doesn't matter, e.g. if lexically `a` is above `b`, both of those functions are already in memory during the create phase of the initial GEC.
 
-### **Functions, Execution Context, Variable Environments and the Scope Chain**
+#### **Functions, Execution Context, Variable Environments and the Scope Chain**
 
 ```
 function b() {
@@ -119,7 +119,7 @@ Variable environment is where the variables live that are created and how they r
 - This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
 - However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
 
-### **Asynchronous Callbacks**
+#### **Asynchronous Callbacks**
 
 Asynchronous simply means more than one at a time. But JavaScript, is synchronous, i.e. executes code a line at a time. However, click events or API calls are the callback functions that run when that event is complete or when that action is complete. Apart from the execution stack where execution contexts are being created and stacked on top of each other when functions are called, there is another list that sits inside the JavaScript engine called the __Event Queue__. This event queue is full of events, notifications of events, HTTP calls, etc.
 
@@ -150,7 +150,7 @@ let undefined = 1;
 // Uncaught SyntaxError: Identifier 'undefined' has already been declared.
 ```
 
-### __Primitive vs Reference values__
+#### __Primitive vs Reference values__
 
 - Primitive types represent single, simple values and are immutable, meaning their value cannot be changed after creation. When a primitive value is assigned to a variable, the actual value is stored directly in that variable's memory location (typically on the call stack). They are _accessed by Value_. When a primitive variable is copied, a new, independent copy of the value is created. Changes to the copied variable do not affect the original.
 - An object is a value in memory which is possibly referenced by an identifier. In JavaScript, objects are the only mutable values. Functions are, in fact, also objects with the additional capability of being callable. Mutable means their properties or elements can be modified after creation. When a reference value is assigned to a variable, the variable stores a reference (a memory address) to the actual object, which is stored in a separate area of memory (typically the heap). These variables are _accessed by Reference_.
@@ -255,7 +255,7 @@ Declares block-scoped variables that cannot be reassigned after their initial as
 - These variables are hoisted but stays in the temporal dead zone until the initialization.
 - For reference types (objects, arrays, functions) creates an immutable binding to the reference or the memory address (mutable value), not an immutable value. _Immutable Reference means the variable declared cannot be reassigned to a different reference, mutable value means properties of the referenced object or array can be modified_.
 
-### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
+#### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
 
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible until its initialization with a value is completed. A block is a pair of braces `{...}` used to group multiple statements. Only applicable to _let_ and _const_.
 
@@ -379,7 +379,7 @@ In JavaScript, a closure is the combination of a function and the lexical enviro
 - Closures are helpful in asynchronous programming because they allow you to keep track of data even after a function has finished running. This is useful when working with timers or server requests, where the function might not run immediately.
 - However, excessive use of closures may retain unnecessary references to variables, causing memory issues due to larger memory usage.
 
-### **call(), apply(), and bind() methods in JavaScript**
+#### **call(), apply(), and bind() methods in JavaScript**
 
 JavaScript provides the call(), apply(), and bind() methods for setting the `this` context within a function, i.e. these methods used to control the execution context of functions, specifically the value of `this` within the function. 
 
@@ -476,6 +476,15 @@ console.log(add(5));
 ## **Objects in Javascript**
 
 JavaScript is designed on an object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
+
+### **Object-Oriented JavaScript and Prototypal Inheritance**
+
+__Classical vs Prototypal Inheritance:__ Inheritance refers to passing down characteristics from a parent to a child so that a new piece of code can reuse and build upon the features of an existing one. Classical inheritance, found in languages like Java and C++, relies on _classes as blueprints for creating objects_. Prototypal inheritance, used in JavaScript, allows _objects to inherit directly from other objects (prototypes)_. 
+
+- In JavaScript, each object has an internal link to another object called its _prototype_ (`__proto__`).
+- That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype.
+- By definition, null has no prototype and acts as the final link in this __prototype chain__.
+- When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.
 
 ### **Functions are Objects**
 
