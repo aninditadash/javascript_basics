@@ -283,47 +283,6 @@ A temporal dead zone (TDZ) is the area of a block where a variable is inaccessib
 #### **Strict Mode**
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 
-## **Objects and Functions in Javascript**
-
-JavaScript is designed on an object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
-
-### **Functions are Objects**
-
-First-class Function: A programming language is said to have First-class functions when _functions in that language are treated like any other variable_. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
-
-In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties. They can also have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called.
-
-### **Creating new objects**
-
-#### **Using object initializers:** 
-
-Also called object literals. Object initializers are expressions, and each object initializer results in a new object being created whenever the statement in which it appears is executed. Identical object initializers create distinct objects that do not compare to each other as equal.
-
-```
-const obj = {
-  name: "Anne", // property name may be an identifier
-  // This is a method called 'greet'
-  greet: function() {
-    console.log(`Hello, my name is ${this.name}.`);
-  }
-};
-```
-#### **Using a constructor function**
-
-Define the object type by writing a constructor function. Create an instance of the object with new.
-```
-function Person(name) {
-  this.name = name;
-  this.greet = function() {
-    console.log(`Hello, my name is ${this.name}.`);
-  }
-}
-const person1 = new Person("Alice");
-const person2 = new Person("Bob");
-```
-
-Namespace: A container to hold variables and functions. Typically used to keep variables and functions with the same name separate. JS does not have the concept of namespaces.
-
 ## **Functions in Javascript**
 
 __Callback Function:__ A function which is passed to another function, to be executed when the other function is finished. So, callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action. Two ways in which the callback may be called: 
@@ -496,3 +455,44 @@ console.log(multiplyByTwo(5));
 ```
 
 Spread operator
+
+## **Objects in Javascript**
+
+JavaScript is designed on an object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
+
+### **Functions are Objects**
+
+First-class Function: A programming language is said to have First-class functions when _functions in that language are treated like any other variable_. For example, in such a language, a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable.
+
+In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties. They can also have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called.
+
+### **Creating new objects**
+
+#### **Using object initializers:** 
+
+Also called object literals. Object initializers are expressions, and each object initializer results in a new object being created whenever the statement in which it appears is executed. Identical object initializers create distinct objects that do not compare to each other as equal.
+
+```
+const obj = {
+  name: "Anne", // property name may be an identifier
+  // This is a method called 'greet'
+  greet: function() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+};
+```
+#### **Using a constructor function**
+
+Define the object type by writing a constructor function. Create an instance of the object with new.
+```
+function Person(name) {
+  this.name = name;
+  this.greet = function() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+const person1 = new Person("Alice");
+const person2 = new Person("Bob");
+```
+
+Namespace: A container to hold variables and functions. Typically used to keep variables and functions with the same name separate. JS does not have the concept of namespaces.
