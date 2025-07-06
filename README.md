@@ -326,6 +326,16 @@ Namespace: A container to hold variables and functions. Typically used to keep v
 
 ## **Functions in Javascript**
 
+__Callback Function:__ A function which is passed to another function, to be executed when the other function is finished. So, callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action. Two ways in which the callback may be called: 
+
+- _Synchronous callbacks_ are called immediately after the invocation of the outer function, with no intervening asynchronous tasks e.g, callbacks passed to `map()`, `forEach()`, etc, while
+- _asynchronous callbacks_ are called at some point later, after an asynchronous operation has completed like `setTimeout()`, `Promise.prototype.then()`, etc.
+
+__Function Currying in JavaScript:__ Function currying is a programming technique to transform a function that takes multiple arguments into a series of functions that take one argument at a time. 
+
+- Currying relies on closures because each of the intermediate functions has access to the arguments passed previously.
+- Currying works well with function composition, allowing you to chain multiple curried functions together to create powerful data transformations in a clear and concise manner.
+
 ### **Function declarations**
 
 A function definition (also called a function declaration, or function statement) consists of the function keyword, followed by the name of the function, list of parameters to the function. 
@@ -411,12 +421,13 @@ console.log(arr); // [2, 4, 6]
 
 ### **Closures in JavaScript** 
 
-In JavaScript, a closure is the combination of a function and the lexical environment within which that function was declared. This means that a closure allows an inner function to access and remember the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing. 
+In JavaScript, a closure is the combination of a function and the lexical environment within which that function was declared. This means that a closure allows an inner function to access and remember the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing (_where the inner function "closes over" variables from its outer scope_).
 
 - Closures are not functions themselves, but rather the environment that a function "remembers" when it is created.
 - Every function in JavaScript has an associated closure, which is created at the time the function is defined. This closure allows the function to "remember" the variables in its scope at the time of its creation, even if those variables are outside the function's execution context.
 - Closures are rely on _lexical scoping_, meaning that a function’s scope is determined by where the function is defined, not where it is executed. This allows inner functions to access variables from their outer function.
 - Closures allow a function to keep variables hidden and only accessible within that function.
+- Closures are helpful in asynchronous programming because they allow you to keep track of data even after a function has finished running. This is useful when working with timers or server requests, where the function might not run immediately.
 - However, excessive use of closures may retain unnecessary references to variables, causing memory issues due to larger memory usage.
 
 
