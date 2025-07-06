@@ -51,17 +51,16 @@ JavaScript is mainly interpreted, but modern JavaScript engines, like V8 in Goog
 
 https://daily.dev/blog/javascript-interpreter-basics-for-developers
 
----------
 
-### **Execution Context**
+## **Execution Context**
 
 A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
 
-#### **Global Environment and the Global Object**
+### **Global Environment and the Global Object**
 
 Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine (here Base is the GEC). By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
 
-#### **Execution context - Creation, Hoisting and Execution**
+### **Execution context - Creation, Hoisting and Execution**
 
 _JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. 
 - The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code, is because the execution context is created in two phases.
@@ -73,7 +72,7 @@ _JavaScript Hoisting_ refers to the process whereby the interpreter appears to m
 - All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
 - The second phase is the execution phase, where the code is run line by line and the variables whose values were undefined in the creation phase are now assigned proper values in memory.
 
-#### **Function Invocation and Execution Stack**
+### **Function Invocation and Execution Stack**
 
 ```
 function b() {}
@@ -93,7 +92,7 @@ var d;
 - When `b()` finishes, then its removed from the execution stack, and same goes for `a()`.
 - The order of the code surrounding those functions lexically doesn't matter, e.g. if lexically `a` is above `b`, both of those functions are already in memory during the create phase of the initial GEC.
 
-#### **Functions, Execution Context, Variable Environments and the Scope Chain**
+### **Functions, Execution Context, Variable Environments and the Scope Chain**
 
 ```
 function b() {
@@ -131,9 +130,7 @@ Asynchronous simply means more than one at a time. But JavaScript, is synchronou
 
 Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how _JavaScript handles asynchronous callbacks_.
 
------
-
-### **JavaScript Types**
+## **JavaScript Types**
 
 Primitive data types are the fundamental, predefined data types available in a programming language. They represent single, indivisible values and are the building blocks for more complex data structures. Common primitive types include integers, floating-point numbers, characters, booleans, and strings. Javascript has 7 primitive types:
 
@@ -153,15 +150,14 @@ let undefined = 1;
 // Uncaught SyntaxError: Identifier 'undefined' has already been declared.
 ```
 
-#### __Primitive vs Reference values__
+### __Primitive vs Reference values__
 
 - Primitive types represent single, simple values and are immutable, meaning their value cannot be changed after creation. When a primitive value is assigned to a variable, the actual value is stored directly in that variable's memory location (typically on the call stack). They are _accessed by Value_. When a primitive variable is copied, a new, independent copy of the value is created. Changes to the copied variable do not affect the original.
 - An object is a value in memory which is possibly referenced by an identifier. In JavaScript, objects are the only mutable values. Functions are, in fact, also objects with the additional capability of being callable. Mutable means their properties or elements can be modified after creation. When a reference value is assigned to a variable, the variable stores a reference (a memory address) to the actual object, which is stored in a separate area of memory (typically the heap). These variables are _accessed by Reference_.
 - When a reference variable is copied, only the reference (memory address) is copied, not the object itself. This means both the original and copied variables point to the same underlying object in memory. Changes made to the object through one variable will be reflected when accessing the object through the other variable.
 
-------
+## **Memory Management in JavaScript**
 
-### **Memory Management in JavaScript**
 JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection). 
 The stack is used for static memory allocation (primitives, function calls), while the heap is used for dynamic memory allocation (objects, arrays).
 
@@ -187,9 +183,7 @@ WeakMaps and WeakSets: are data structures whose APIs closely mirror their non-w
 
 WeakMap and WeakSet got the name from the concept of _weakly held_ values. If `x` is weakly held by `y`, it means that although you can access the value of `x` via `y`, the mark-and-sweep algorithm won't consider `x` as reachable if nothing else _strongly holds_ to it.
 
-------
-
-### __Type Coercion vs Type Conversion__
+## __Type Coercion vs Type Conversion__
 
 Coercion in JavaScript refers to the automatic or implicit conversion of values from one data type to another. This process occurs when an operation or function requires a certain data type, but the provided value is of a different type. JavaScript, being a weakly-typed language, handles these conversions automatically to facilitate operations between different data types. 
 
@@ -213,9 +207,9 @@ let booleanValue = Boolean(value); // Explicitly converting a number to a boolea
 console.log(booleanValue); // Output: false
 ```
 
-#### **Common Issues of Type Coercion**
+### **Common Issues of Type Coercion**
 
-Comparing Different Data Types: Comparison Operator(= =), allows coercion due to which the unexpected conversions occur. To avoid this, we should use the strict equality(= = =) operator.
+- __Comparing Different Data Types:__ Comparison Operator(==), allows coercion due to which the unexpected conversions occur. To avoid this, we should use the strict equality(===) operator.
 
 ```
 console.log(0 == "0");  // true
@@ -223,7 +217,7 @@ console.log(0 == false);  // true
 console.log(" " + 0 == 0); // true
 ```
 
-Operations on null and undefined: Null and undefined behave unexpectedly.
+- __Operations on null and undefined:__ Null and undefined behave unexpectedly.
 
 ```
 console.log(null == undefined);   // true
@@ -233,7 +227,7 @@ console.log(false == 0); // true
 console.log(null == 0); // false, but Number(null) = 0 and Boolean(null) = false
 ```
 
-NaN Comparisons: NaN is not equal to itself, so checking with isNaN() is the best way to detect it.
+- __NaN Comparisons:__ NaN is not equal to itself, so checking with isNaN() is the best way to detect it.
 
 ```
 console.log(NaN == NaN);  // false
@@ -261,7 +255,7 @@ Declares block-scoped variables that cannot be reassigned after their initial as
 - These variables are hoisted but stays in the temporal dead zone until the initialization.
 - For reference types (objects, arrays, functions) creates an immutable binding to the reference or the memory address (mutable value), not an immutable value. _Immutable Reference means the variable declared cannot be reassigned to a different reference, mutable value means properties of the referenced object or array can be modified_.
 
-#### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
+### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
 
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible until its initialization with a value is completed. A block is a pair of braces `{...}` used to group multiple statements. Only applicable to _let_ and _const_.
 
@@ -281,6 +275,7 @@ A temporal dead zone (TDZ) is the area of a block where a variable is inaccessib
 - Its not applicable to var as they are hoisted and initialized to undefined at the beginning of their function scope, regardless of where they are declared. 
 
 #### **Strict Mode**
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 
 ## **Functions in Javascript**
