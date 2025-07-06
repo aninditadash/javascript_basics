@@ -331,11 +331,6 @@ __Callback Function:__ A function which is passed to another function, to be exe
 - _Synchronous callbacks_ are called immediately after the invocation of the outer function, with no intervening asynchronous tasks e.g, callbacks passed to `map()`, `forEach()`, etc, while
 - _asynchronous callbacks_ are called at some point later, after an asynchronous operation has completed like `setTimeout()`, `Promise.prototype.then()`, etc.
 
-__Function Currying in JavaScript:__ Function currying is a programming technique to transform a function that takes multiple arguments into a series of functions that take one argument at a time. 
-
-- Currying relies on closures because each of the intermediate functions has access to the arguments passed previously.
-- Currying works well with function composition, allowing you to chain multiple curried functions together to create powerful data transformations in a clear and concise manner.
-
 ### **Function declarations**
 
 A function definition (also called a function declaration, or function statement) consists of the function keyword, followed by the name of the function, list of parameters to the function. 
@@ -430,5 +425,74 @@ In JavaScript, a closure is the combination of a function and the lexical enviro
 - Closures are helpful in asynchronous programming because they allow you to keep track of data even after a function has finished running. This is useful when working with timers or server requests, where the function might not run immediately.
 - However, excessive use of closures may retain unnecessary references to variables, causing memory issues due to larger memory usage.
 
+### **call(), apply(), and bind() methods in JavaScript**
+
+JavaScript provides the call(), apply(), and bind() methods for setting the `this` context within a function, i.e. these methods used to control the execution context of functions, specifically the value of `this` within the function. 
+
+- The `bind()` method creates a new function (a "bound function") that, when called, has its `this` keyword set to the provided value. It does not immediately invoke the function.
+
+```
+const person = { firstName: "Charlie" };
+
+function greet(city, occupation) {
+  console.log(
+    `Hello, I'm ${this.firstName}. I am from ${city} and work as ${occupation}`
+  );
+}
+
+const greetFn = greet.bind(person);
+greetFn("London", "Engineer"); // Hello, I'm Charlie. I am from London and work as Engineer
+```
+
+- The `call()` method immediately invokes a function with a specified this value and arguments provided individually.
+- The apply() method is similar to call(), but it takes arguments as an array (or an array-like object).
+
+```
+const person = { firstName: "Charlie" };
+
+function greet(city, occupation) {
+  console.log(
+    `Hello, I'm ${this.firstName}. I am from ${city} and work as ${occupation}`
+  );
+}
+
+greet.call(person, "London", "Engineer"); // Hello, I'm Charlie. I am from London and work as Engineer
+greet.apply(person, ["London", "Engineer"]); // Hello, I'm Charlie. I am from London and work as Engineer
+```
+
+#### **Function Borrowing**
+
+Function borrowing enables us to use a method from one object and apply it to another object. This can be achieved by invoking a method from one object but setting the this keyword inside the method to point to a different object. This is primarily achieved by explicitly setting the `this` context of the borrowed method to the object on which it is intended to be used.
+
+```
+const person = {
+  name: "Alice",
+  greet: function () {
+    console.log(`Hello, my name is ${this.name}`);
+  },
+};
+
+const person2 = {
+  name: "Bob",
+};
+
+person.greet.call(person2); // Output: Hello, my name is Bob
+```
+
+#### **Function Currying**
+
+Function currying is a programming technique to transform a function that takes multiple arguments into a series of functions that take one argument at a time. 
+
+- Currying relies on closures because each of the intermediate functions has access to the arguments passed previously.
+- Currying works well with function composition, allowing you to chain multiple curried functions together to create powerful data transformations in a clear and concise manner.
+
+```
+function multiply(a, b) {
+  return a * b;
+}
+
+const multiplyByTwo = multiply.bind(this, 2);
+console.log(multiplyByTwo(5));
+```
 
 Spread operator
