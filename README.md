@@ -538,3 +538,33 @@ class Rectangle {
 ```
 
 Namespace: A container to hold variables and functions. Typically used to keep variables and functions with the same name separate. JS does not have the concept of namespaces.
+
+__Spread Syntax:__ The spread `(...)`obje syntax allows an iterable, such as an array or string, to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected. In an object literal, the spread syntax enumerates the properties of an object and adds the key-value pairs to the object being created.
+
+- Spread syntax looks exactly like rest syntax. In a way, spread syntax is the opposite of rest syntax.
+- Spread syntax "expands" an array into its elements, while rest syntax collects multiple elements and "condenses" them into a single element.
+- 3 distinct places that accept the spread syntax: Function arguments list, Array literals and Object literals.
+- It creates a _shallow copy of arrays and objects_.
+
+```
+const sum = (x, y, z) => x + y + z;
+
+const numbers = [1, 2, 3];
+
+console.log(sum(...numbers)); // 6
+console.log(sum.apply(null, numbers)); // 6
+```
+
+__Destructuring Syntax:__ The destructuring syntax is a JavaScript syntax that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. This simplifies the process of accessing specific values within an object or array.
+
+```
+let a, b, rest;
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+
+console.log(a, b); //  10, 20
+console.log(rest); // [30, 40, 50]
+```
+
+
+
+
