@@ -557,6 +557,8 @@ console.log(sum.apply(null, numbers)); // 6
 
 __Destructuring Syntax:__ The destructuring syntax is a JavaScript syntax that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. This simplifies the process of accessing specific values within an object or array.
 
+- For both object and array destructuring, there are two kinds of destructuring patterns: binding pattern and assignment pattern, with slightly different syntaxes.
+
 ```
 let a, b, rest;
 [a, b, ...rest] = [10, 20, 30, 40, 50];
