@@ -15,15 +15,15 @@ JavaScript is a lightweight, cross-platform, object-oriented scripting language 
 - **Server-side Support:** Node.js and frameworks like Express.js are widely used for server-side JavaScript, enabling full-stack development.
 - **Dynamic, interpreted, weakly typed language:** Dynamic Typing means that we don't tell the JavaScript engine what type of data a variable holds. Instead, it figures it out while the code is executing, so a single variable can hold different datatypes, at different times during code execution. Weakly typed means the datatypes of the variables are inferred automatically based on the type of value of value stored in it.
 
-#### **Syntax Parser**
+### **Syntax Parser**
 
 A program that reads the code and determines what it does and if its grammar is valid. The programs like compilers and interpreters, read the code character by character and determine if the syntax is valid and then implementing that syntax in a way the computer can understand.
 
-#### **Lexical Environment**
+### **Lexical Environment**
 
 Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
 
-### **How code is parsed and compiled in Javascript**
+## **How code is parsed and compiled in Javascript**
 
 __Interpreter:__ An interpreter translates code written in a high-level programming language into machine code line-by-line as the code runs.
 
@@ -33,7 +33,7 @@ __JIT Compiler:__ A JIT compiler converts code into byte code first. Then, at ru
 
 __Abstract Syntax Tree (AST):__ The AST is a hierarchical, tree-like representation of the code's structure, reflecting its syntax and relationships between different elements.
 
-#### __Byte Code vs Machine Code (Object code):__
+### __Byte Code vs Machine Code (Object code):__
 Byte code is an intermediate code between the source code and machine code. It is a low-level code that is the result of the compilation of a source code which is written in a high-level language.
 -  Byte code is considered as the intermediate-level code and Machine Code as low-level code.
 -  Byte code is a non-runnable code generated after compilation of source code and it relies on an interpreter to get executed.
@@ -51,16 +51,15 @@ JavaScript is mainly interpreted, but modern JavaScript engines, like V8 in Goog
 
 https://daily.dev/blog/javascript-interpreter-basics-for-developers
 
-
 ## **Execution Context**
 
 A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
 
-#### **Global Environment and the Global Object**
+### **Global Environment and the Global Object**
 
 Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine (here Base is the GEC). By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
 
-#### **Execution context - Creation, Hoisting and Execution**
+### **Execution context - Creation, Hoisting and Execution**
 
 _JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. 
 - The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code, is because the execution context is created in two phases.
@@ -72,7 +71,7 @@ _JavaScript Hoisting_ refers to the process whereby the interpreter appears to m
 - All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
 - The second phase is the execution phase, where the code is run line by line and the variables whose values were undefined in the creation phase are now assigned proper values in memory.
 
-#### **Function Invocation and Execution Stack**
+### **Function Invocation and Execution Stack**
 
 ```
 function b() {}
@@ -92,7 +91,7 @@ var d;
 - When `b()` finishes, then its removed from the execution stack, and same goes for `a()`.
 - The order of the code surrounding those functions lexically doesn't matter, e.g. if lexically `a` is above `b`, both of those functions are already in memory during the create phase of the initial GEC.
 
-#### **Functions, Execution Context, Variable Environments and the Scope Chain**
+### **Functions, Execution Context, Variable Environments and the Scope Chain**
 
 ```
 function b() {
@@ -119,7 +118,7 @@ Variable environment is where the variables live that are created and how they r
 - This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
 - However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
 
-#### **Asynchronous Callbacks**
+### **Asynchronous Callbacks**
 
 Asynchronous simply means more than one at a time. But JavaScript, is synchronous, i.e. executes code a line at a time. However, click events or API calls are the callback functions that run when that event is complete or when that action is complete. Apart from the execution stack where execution contexts are being created and stacked on top of each other when functions are called, there is another list that sits inside the JavaScript engine called the __Event Queue__. This event queue is full of events, notifications of events, HTTP calls, etc.
 
@@ -150,7 +149,7 @@ let undefined = 1;
 // Uncaught SyntaxError: Identifier 'undefined' has already been declared.
 ```
 
-#### __Primitive vs Reference values__
+### __Primitive vs Reference values__
 
 - Primitive types represent single, simple values and are immutable, meaning their value cannot be changed after creation. When a primitive value is assigned to a variable, the actual value is stored directly in that variable's memory location (typically on the call stack). They are _accessed by Value_. When a primitive variable is copied, a new, independent copy of the value is created. Changes to the copied variable do not affect the original.
 - An object is a value in memory which is possibly referenced by an identifier. In JavaScript, objects are the only mutable values. Functions are, in fact, also objects with the additional capability of being callable. Mutable means their properties or elements can be modified after creation. When a reference value is assigned to a variable, the variable stores a reference (a memory address) to the actual object, which is stored in a separate area of memory (typically the heap). These variables are _accessed by Reference_.
@@ -177,7 +176,7 @@ __Reference-counting garbage collection:__ the JavaScript engine keeps track of 
 
 __Mark-and-sweep algorithm:__ This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". This algorithm assumes the knowledge of a set of objects called roots. In JavaScript, the root is the global object. Periodically, the garbage collector will start from these roots, find all objects that are referenced from these roots, then all objects referenced from these, etc. Starting from the roots, the garbage collector will thus find all reachable objects and collect all non-reachable objects. Its effective in collecting circular references.
 
-#### **Data structures aiding memory management**
+### **Data structures aiding memory management**
 
 WeakMaps and WeakSets: are data structures whose APIs closely mirror their non-weak counterparts: Map and Set. WeakMap allows you to maintain a collection of key-value pairs, while WeakSet allows you to maintain a collection of unique values, both with performant addition, deletion, and querying.
 
@@ -255,7 +254,7 @@ Declares block-scoped variables that cannot be reassigned after their initial as
 - These variables are hoisted but stays in the temporal dead zone until the initialization.
 - For reference types (objects, arrays, functions) creates an immutable binding to the reference or the memory address (mutable value), not an immutable value. _Immutable Reference means the variable declared cannot be reassigned to a different reference, mutable value means properties of the referenced object or array can be modified_.
 
-#### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
+### **Temporal Dead Zone (TDZ) and Hoisting in JavaScript**
 
 A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible until its initialization with a value is completed. A block is a pair of braces `{...}` used to group multiple statements. Only applicable to _let_ and _const_.
 
