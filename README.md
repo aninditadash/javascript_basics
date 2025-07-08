@@ -476,6 +476,9 @@ console.log(add(5));
 
 JavaScript is designed on an object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
 
+- All objects in JavaScript inherit from at least one other object. The object being inherited from is known as the prototype, and the inherited properties can be found in the prototype object of the constructor.
+- JavaScript has a special keyword, this, that you can use within a method to refer to the current object.
+
 ### **Object-Oriented JavaScript and Prototypal Inheritance**
 
 __Classical vs Prototypal Inheritance:__ Inheritance refers to passing down characteristics from a parent to a child so that a new piece of code can reuse and build upon the features of an existing one. Classical inheritance, found in languages like Java and C++, relies on _classes as blueprints for creating objects_. Prototypal inheritance, used in JavaScript, allows _objects to inherit directly from other objects (prototypes)_. 
@@ -516,25 +519,6 @@ function Person(name) {
 }
 const person1 = new Person("Alice");
 const person2 = new Person("Bob");
-```
-
-### **Using Classes**
-
-Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
-
-- In other languages, classes, or constructors, are distinguished from objects, or instances.
-- In JavaScript, classes are mainly an abstraction over the existing prototypical inheritance mechanism — all patterns are convertible to prototype-based inheritance.
-- Classes are normal JavaScript values, and have their own prototype chains.
-- Classes are in fact "special functions", and a class can be defined in two ways: a class expression or a class declaration. 3 key features of classes: Constructor, Instance methods and instance fields, Static methods and static fields.
-
-```
-// Declaration
-class Rectangle {
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
-  }
-}
 ```
 
 Namespace: A container to hold variables and functions. Typically used to keep variables and functions with the same name separate. JS does not have the concept of namespaces.
@@ -583,6 +567,24 @@ if (!("make" in car)) {
 console.log(car.make); // "Suzuki"
 ```
 
+## **Classes and Object-Oriented Programming (OOP)**
+
+Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
+
+- In other languages, classes, or constructors, are distinguished from objects, or instances.
+- In JavaScript, classes are mainly an abstraction over the existing prototypical inheritance mechanism — all patterns are convertible to prototype-based inheritance.
+- Classes are normal JavaScript values, and have their own prototype chains.
+- Classes are in fact "special functions", and a class can be defined in two ways: a class expression or a class declaration. 3 key features of classes: Constructor, Instance methods and instance fields, Static methods and static fields.
+
+```
+// Declaration
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+```
 
 
 
