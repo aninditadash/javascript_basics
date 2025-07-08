@@ -641,6 +641,17 @@ class Rectangle {
   }
 }
 ```
+### **Inheritance**
+
+The extends keyword is used in class declarations or class expressions to create a class as a child of another constructor (either a class or a function).
+If there is a constructor present in the subclass, it needs to first call `super()` before using `this`. The `super` keyword can also be used to call corresponding methods of super class.
+
+#### **Evaluation order**
+
+When a class declaration or class expression is evaluated, its various components are evaluated in the following order:
+
+- 
+
 
 
 
