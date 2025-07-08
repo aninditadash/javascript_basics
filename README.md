@@ -344,7 +344,7 @@ const square = (number) => number * number;
 
 There are two kinds of parameter syntax: default parameters and rest parameters.
 
-#### **Default parameters**
+### **Default parameters**
 
 In JavaScript, parameters of functions default to undefined. However, in some situations we can set it to a different default value using default parameters.
 
@@ -354,7 +354,7 @@ const multiply = (a, b = 1) => a * b;
 console.log(multiply(5)); // 5
 ```
 
-#### **Rest parameters**
+### **Rest parameters**
 
 The rest parameter syntax allows us to represent an indefinite number of arguments as an array.
 
@@ -378,7 +378,7 @@ In JavaScript, a closure is the combination of a function and the lexical enviro
 - Closures are helpful in asynchronous programming because they allow you to keep track of data even after a function has finished running. This is useful when working with timers or server requests, where the function might not run immediately.
 - However, excessive use of closures may retain unnecessary references to variables, causing memory issues due to larger memory usage.
 
-#### **call(), apply(), and bind() methods in JavaScript**
+### **call(), apply(), and bind() methods in JavaScript**
 
 JavaScript provides the call(), apply(), and bind() methods for setting the `this` context within a function, i.e. these methods used to control the execution context of functions, specifically the value of `this` within the function. 
 
@@ -413,7 +413,7 @@ greet.call(person, "London", "Engineer"); // Hello, I'm Charlie. I am from Londo
 greet.apply(person, ["London", "Engineer"]); // Hello, I'm Charlie. I am from London and work as Engineer
 ```
 
-#### **Function Borrowing**
+### **Function Borrowing**
 
 Function borrowing enables us to use a method from one object and apply it to another object. This can be achieved by invoking a method from one object but setting the this keyword inside the method to point to a different object. This is primarily achieved by explicitly setting the `this` context of the borrowed method to the object on which it is intended to be used.
 
@@ -432,7 +432,7 @@ const person2 = {
 person.greet.call(person2); // Output: Hello, my name is Bob
 ```
 
-#### **Function Currying**
+### **Function Currying**
 
 Function currying is a programming technique to transform a function that takes multiple arguments into a series of functions that take one argument at a time. 
 
@@ -448,7 +448,7 @@ const multiplyByTwo = multiply.bind(this, 2);
 console.log(multiplyByTwo(5));
 ```
 
-#### **Pure and Impure Functions**
+### **Pure and Impure Functions**
 
 In JavaScript, functions are categorized as pure or impure based on their adherence to two core principles: determinism and lack of side effects.
 
@@ -519,6 +519,21 @@ function Person(name) {
 }
 const person1 = new Person("Alice");
 const person2 = new Person("Bob");
+```
+
+### **Defining getters and setters**
+
+A getter is a function associated with a property that gets the value of a specific property. A setter is a function associated with a property that sets the value of a specific property. Together, they can indirectly represent the value of a property. Getters and setters can be either defined within object initializers, or added later to any existing object.
+
+```
+const obj = {
+  get prop() {
+    // getter, the code executed when reading obj.prop
+  },
+  set prop() {
+    // setter, the code executed when setting obj.prop
+  },
+};
 ```
 
 Namespace: A container to hold variables and functions. Typically used to keep variables and functions with the same name separate. JS does not have the concept of namespaces.
