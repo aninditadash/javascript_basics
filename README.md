@@ -521,7 +521,7 @@ const person1 = new Person("Alice");
 const person2 = new Person("Bob");
 ```
 
-In the above code, the `greet()` method is added to every instance of the `Person` object created which takes up memory. Instead, we can add the greet()` method to the prototype of the `Person` constructor.
+In the above code, the `greet()` method is added to every instance of the `Person` object created which takes up memory. Instead, we can add the `greet()` method to the prototype of the `Person` constructor.
 
 ### **Defining getters and setters**
 
