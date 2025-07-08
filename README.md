@@ -557,7 +557,9 @@ console.log(sum.apply(null, numbers)); // 6
 
 __Destructuring Syntax:__ The destructuring syntax is a JavaScript syntax that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. This simplifies the process of accessing specific values within an object or array.
 
-- For both object and array destructuring, there are two kinds of destructuring patterns: binding pattern and assignment pattern, with slightly different syntaxes.
+- For both object and array destructuring, there are two kinds of destructuring patterns: _binding pattern_ and _assignment pattern_, with slightly different syntaxes.
+- Each destructured property can have a default value.
+- The default value is used when the _property is not present, or has value undefined_. It is not used if the property has value null.
 
 ```
 let a, b, rest;
@@ -566,6 +568,21 @@ let a, b, rest;
 console.log(a, b); //  10, 20
 console.log(rest); // [30, 40, 50]
 ```
+
+__in operator:__ is a boolean operator used to check for the existence of a specified property within an object or its prototype chain. It returns _true if the property is found, and false otherwise_. If the property has a value of undefined, the in operator returns true for that property. It cannot be used to search for values in other collections. To test if a certain value exists in an array, use `Array.prototype.includes()`. For sets, use `Set.prototype.has()`.
+
+```
+const car = { make: "Honda", model: "Accord", year: 1998 };
+console.log("make" in car); // true
+
+delete car.make;
+if (!("make" in car)) {
+  car.make = "Suzuki";
+}
+
+console.log(car.make); // "Suzuki"
+```
+
 
 
 
