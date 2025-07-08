@@ -590,17 +590,57 @@ Classes are a template for creating objects. They encapsulate data with code to 
 - In JavaScript, classes are mainly an abstraction over the existing prototypical inheritance mechanism — all patterns are convertible to prototype-based inheritance.
 - Classes are normal JavaScript values, and have their own prototype chains.
 - Classes are in fact "special functions", and a class can be defined in two ways: a class expression or a class declaration. 3 key features of classes: Constructor, Instance methods and instance fields, Static methods and static fields.
+- Unlike function declarations, class declarations are not hoisted (or, in some interpretations, hoisted but with the temporal dead zone restriction), which means you cannot use a class before it is declared.
+- The __constructor method__ is a special method for creating and initializing an object created with a class. There can only be one special method with the name "constructor".
+- __Instance Methods__ are defined on the prototype of each class instance and are shared by all instances. Methods can be plain functions, async functions, generator functions, or async generator functions.
+- __Class fields__ are similar to object properties.
+
+### **Static initialization blocks**
+
+Static initialization blocks allow flexible initialization of static properties, including the evaluation of statements during initialization, while granting access to the private scope.
+
+- Multiple static blocks can be declared, and these can be interleaved with the declaration of static fields and methods (all static items are evaluated in declaration order). (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks)
+
+### **Static methods and fields**
+
+The static keyword defines a static method or field for a class.
+
+- Static properties (fields and methods) are defined on the class itself instead of each instance.
+- Static methods are often used to create utility functions for an application, whereas static fields are useful for caches, fixed-configuration, or any other data that doesn't need to be replicated across instances.
+- `this` inside static methods refer to the class itself and not the object calling the method.
 
 ```
 // Declaration
 class Rectangle {
+  height = 0;
+  width;
   constructor(height, width) {
     this.height = height;
     this.width = width;
   }
 }
 ```
+### **Private elements** 
 
+Private elements get created by using a hash # prefix and cannot be legally referenced outside of the class. The privacy encapsulation of these class elements is enforced by JavaScript itself. The only way to access a private element is via dot notation, and you can only do so within the class that defines the private element. 
+
+- However, constructors cannot be private in JavaScript.
+- We can have Private class fields and methods
+- Private static fields and methods
+- Private getters and setters
+- Private static getters and setters
+- Private fields can only be declared up-front in a field declaration. They cannot be created later through assigning to them, the way that normal properties can.
+
+```
+class Rectangle {
+  #height = 0;
+  #width;
+  constructor(height, width) {
+    this.#height = height;
+    this.#width = width;
+  }
+}
+```
 
 
 
