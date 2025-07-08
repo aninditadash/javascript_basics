@@ -521,6 +521,8 @@ const person1 = new Person("Alice");
 const person2 = new Person("Bob");
 ```
 
+In the above code, the `greet()` method is added to every instance of the `Person` object created which takes up memory. Instead, we can add the greet()` method to the prototype of the `Person` constructor.
+
 ### **Defining getters and setters**
 
 A getter is a function associated with a property that gets the value of a specific property. A setter is a function associated with a property that sets the value of a specific property. Together, they can indirectly represent the value of a property. Getters and setters can be either defined within object initializers, or added later to any existing object.
@@ -584,7 +586,7 @@ console.log(car.make); // "Suzuki"
 
 ## **Classes and Object-Oriented Programming (OOP)**
 
-Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes.
+Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are unique to classes. Class is just syntactic sugar for the constructor functions.
 
 - In other languages, classes, or constructors, are distinguished from objects, or instances.
 - In JavaScript, classes are mainly an abstraction over the existing prototypical inheritance mechanism — all patterns are convertible to prototype-based inheritance.
@@ -650,8 +652,13 @@ If there is a constructor present in the subclass, it needs to first call `super
 
 When a class declaration or class expression is evaluated, its various components are evaluated in the following order:
 
-- 
+- The extends clause, if present, is first evaluated. It must evaluate to a valid constructor function or null, or a TypeError is thrown.
+- The class elements' property keys are evaluated in the order of declaration.
+- Instance Methods and accessors are installed in the order of declaration on the prototype property of the current class, and static methods and accessors are installed on the class itself. Private instance methods and accessors are saved to be installed on the instance directly later. (_i.e. methods and accessors are added to the prototype property of the class_)
+- The class is now initialized with the prototype specified by extends and implementation specified by constructor.
 
+
+## **Iterables and Arrays**
 
 
 
