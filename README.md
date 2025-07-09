@@ -660,5 +660,19 @@ When a class declaration or class expression is evaluated, its various component
 
 ## **Iterables and Arrays**
 
+### **Iterators**
 
+In JavaScript an iterator is an object which defines a sequence and potentially a return value upon its termination, so an iterator is any object which implements the `Iterator protocol` by having a `next()` method that returns an object with two properties: value - _The next value in the iteration sequence._ and done - _This is true if the last value in the sequence has already been consumed. If value is present alongside done, it is the iterator's return value._
+
+- Once created, an iterator object can be iterated explicitly by repeatedly calling next().
+- After a terminating value has been yielded additional calls to next() should continue to return `{done: true}`.
+- Most common iterator in JavaScript is the Array iterator, which returns each value in the associated array in sequence.
+
+### **Iterables**
+
+An object is iterable if it defines its iteration behavior, such as what values are looped over in a `for...of` construct. In order to be iterable, an object must implement the [Symbol.iterator]() method. This means that the object (or one of the objects up its prototype chain) must have a property with a `Symbol.iterator` key.
+
+- Some built-in types, such as Array or Map, have a default iteration behavior, while other types (such as Object) do not. `String`, `Array`, `TypedArray`, `Map` and `Set` are all built-in iterables.
+- It may be possible to iterate over an iterable more than once, or only once.
+- Iterables which can iterate only once (such as Generators) customarily return `this` from their [Symbol.iterator]() method, whereas iterables which can be iterated many times must return a new iterator on each invocation of [Symbol.iterator]().
 
