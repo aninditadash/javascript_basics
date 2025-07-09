@@ -687,4 +687,34 @@ __Array reduce() Method:__ iterates over an array, applying a reducer function t
   - accumulator (acc): It holds the accumulated value from the previous iterations. In the first iteration, if an initialValue is provided, the accumulator starts with that value. Otherwise, it starts with the first element of the array.
   - currentValue (curr): It represents the current element being processed in the iteration.
 
+### **Maps**
+
+A Map object is a key/value map that can iterate its elements in insertion order.
+
+- Map allows keys of any data type (including objects, functions, or primitive values), unlike plain objects where keys are typically strings or symbols.
+- Map preserves the original insertion order of its elements, meaning iteration over a Map will return elements in the order they were added.
+- Map provides dedicated methods for manipulation, such as `set()`, `get()`, `has()`, `delete()`, and `clear()`.
+
+### **Sets**
+
+Set objects are collections of unique values, we can iterate its elements in insertion order. A value in a Set may only occur once; it is unique in the Set's collection. The insertion order corresponds to the order in which each element was inserted into the set by the add() method successfully.
+
+- We can create an Array from a Set using `Array.from` or the `spread syntax`. Also, the Set constructor accepts an Array to convert in the other direction.
+
+## **Introduction to events**
+
+Events in JavaScript are actions or occurrences within a web page or application that the browser can detect and respond to. These events can be triggered by various sources, including user interactions (e.g., clicks, key presses, mouse movements) or by the browser itself (e.g., page load, image load, form submit).
+
+__Event Handlers:__  To react to an event, attach an event handler (a function) to the element that will be affected by the event. It is a block of code that runs when the event fires. When such a block of code is defined to run in response to an event, we say we are _registering an event handler_. Also, called called event listeners. `addEventListener()` - standard way to attach event handlers, allowing you to specify event type and the function to be called when that event occurs. If you've added an event handler using `addEventListener()`, you can remove it again using the `removeEventListener()` method.
+
+__Event Object:__ When an event occurs, an Event object is passed to the event handler function. This object contains information about the event, such as the target element (`event.target`), the type of event (`event.type`), and coordinates for mouse events.
+
+__Preventing Default Behavior:__ `event.preventDefault()` is a method used within an event handler to stop the default action associated with a specific event from occurring. When certain events, like clicking a link or submitting a form, are triggered, browsers typically perform a default behavior (e.g., navigating to a new URL, refreshing the page). This method helps to override this default behavior and implement custom logic instead.
+
+### **Event bubbling and Event Capturing**
+
+They are two mechanisms of event propagation in the Document Object Model (DOM), describing how events travel through the DOM tree when triggered. In __event bubbling__, the event starts at the target element and then propagates up to its ancestors (parent elements). Conversely, in event capturing, the event starts at the root of the DOM tree and propagates down to the target element. 
+
+- When an event occurs on an element, the event handler associated with that element is triggered first. Then, the event "bubbles up" to its parent element, and so on, until it reaches the root of the document (or the <body> element). e.g. if you click a button inside a div, and both have click event listeners, the button's click event handler will be triggered first, then the div's click event handler.
+
 
