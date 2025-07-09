@@ -713,8 +713,11 @@ __Preventing Default Behavior:__ `event.preventDefault()` is a method used withi
 
 ### **Event bubbling and Event Capturing**
 
-They are two mechanisms of event propagation in the Document Object Model (DOM), describing how events travel through the DOM tree when triggered. In __event bubbling__, the event starts at the target element and then propagates up to its ancestors (parent elements). Conversely, in event capturing, the event starts at the root of the DOM tree and propagates down to the target element. 
+They are two mechanisms of event propagation in the Document Object Model (DOM), describing how events travel through the DOM tree when triggered. In __event bubbling__, the event starts at the target element and then propagates up to its ancestors (parent elements). Conversely, in event capturing, the event starts at the root of the DOM tree and propagates down to the target element. Both capturing and bubbling can be stopped using `event.stopPropagation()` to prevent the event from propagating further. 
 
 - When an event occurs on an element, the event handler associated with that element is triggered first. Then, the event "bubbles up" to its parent element, and so on, until it reaches the root of the document (or the <body> element). e.g. if you click a button inside a div, and both have click event listeners, the button's click event handler will be triggered first, then the div's click event handler.
 
+In __capturing__, the event travels down the DOM tree from the root to the target element. The event handlers attached to the ancestors of the target element are triggered before the event reaches the target itself. 
 
+- If you set a capturing event listener on the <body> and a bubbling listener on a button inside it, the capturing listener will be triggered first, then the bubbling listener.
+- Event capture is disabled by default. To enable it you have to pass the `capture` option in `addEventListener()`.
