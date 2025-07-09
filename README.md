@@ -472,6 +472,10 @@ function add(newValue) {
 console.log(add(5));
 ```
 
+### **Higher Order Functions**
+
+A higher-order function is a function that either takes one or more functions as arguments or returns a function as its result. Essentially, it treats functions as first-class citizens, allowing them to be manipulated like any other data type. This concept is fundamental to functional programming paradigms. e.g. - map(), filter(), reduce(), etc.
+
 ## **Objects in Javascript**
 
 JavaScript is designed on an object-based paradigm. An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method.
@@ -675,4 +679,12 @@ An object is iterable if it defines its iteration behavior, such as what values 
 - Some built-in types, such as Array or Map, have a default iteration behavior, while other types (such as Object) do not. `String`, `Array`, `TypedArray`, `Map` and `Set` are all built-in iterables.
 - It may be possible to iterate over an iterable more than once, or only once.
 - Iterables which can iterate only once (such as Generators) customarily return `this` from their [Symbol.iterator]() method, whereas iterables which can be iterated many times must return a new iterator on each invocation of [Symbol.iterator]().
+
+__Array reduce() Method:__ iterates over an array, applying a reducer function to each element, accumulating a single output value. It takes an initial value and processes elements from left to right, reducing the array to a single result.
+
+- It takes a callback function as its first argument.
+- This function is executed for each element in the array and typically takes two main parameters:
+  - accumulator (acc): It holds the accumulated value from the previous iterations. In the first iteration, if an initialValue is provided, the accumulator starts with that value. Otherwise, it starts with the first element of the array.
+  - currentValue (curr): It represents the current element being processed in the iteration.
+
 
