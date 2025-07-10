@@ -740,3 +740,8 @@ __Chaining asynchronous tasks:__ A common need is to execute two or more asynchr
 
 -  `then()` method takes up to two arguments; the first argument is a callback function for the fulfilled case of the promise, and the second argument is a callback function for the rejected case.
 -  `catch()` and `finally()` methods call `then()` internally and make error handling less verbose.
+
+__Combining multiple promises:__ There are four composition tools for running asynchronous operations concurrently: `Promise.all()`, `Promise.allSettled()`, `Promise.any()`, and `Promise.race()`.
+
+
+
