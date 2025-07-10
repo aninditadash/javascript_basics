@@ -743,5 +743,14 @@ __Chaining asynchronous tasks:__ A common need is to execute two or more asynchr
 
 __Combining multiple promises:__ There are four composition tools for running asynchronous operations concurrently: `Promise.all()`, `Promise.allSettled()`, `Promise.any()`, and `Promise.race()`.
 
+### **async/await**
+
+async and await in JavaScript provide a more readable and synchronous-looking way to handle asynchronous operations, primarily built on top of Promises.
+
+- The async keyword is placed before a function declaration to designate it as an asynchronous function. An async function implicitly returns a Promise.
+- The value returned by an async function will be the resolved value of that Promise. If an async function throws an error, the returned Promise will be rejected with that error.
+- The await keyword can only be used inside an async function. await pauses the execution of the async function until a Promise is settled (either resolved or rejected).
+- If the awaited Promise resolves, the await expression evaluates to the resolved value of the Promise. If the awaited Promise rejects, the await expression throws the rejected value, which can be caught using a try...catch block.
+
 
 
