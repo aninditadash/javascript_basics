@@ -1,6 +1,6 @@
 ## Introduction to Javascript
 
-JavaScript is a lightweight, cross-platform, object-oriented scripting language used to make webpages interactive. It is an interpreted language that executes code line by line, providing more flexibility. It is a single-threaded programming language that we can use for client-side or server-side development. It is a dynamically typed programming language. JavaScript code is run using the **V8 Engine** in the Chrome browser or **SpiderMonkey** in Firefox. It provides the following features:
+JavaScript is a lightweight, cross-platform, object-oriented scripting language used to make webpages interactive. It is an interpreted language that executes code line by line, providing more flexibility. It is a single-threaded programming language that we can use for client-side or server-side development. It is a dynamically typed programming language. JavaScript code is run using the **V8 Engine** in the Chrome browser or **SpiderMonkey** in Firefox. [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model] It provides the following features:
 
 - **Browser Support:** All browsers support JavaScript, as all modern browser comes with the built-in JavaScript execution environment.
 - **Dom Manipulation:** JavaScript allows manipulation of the webpage elements, as it contains the various methods to access the DOM elements using different attributes and allows to customize the HTML elements.
@@ -117,17 +117,6 @@ Variable environment is where the variables live that are created and how they r
 - Now, we have commented `myVar` declaration in `b`, and trying to print its value. When `b()` is invoked, `myVar` is 1, meaning its value is referred from the GEC (so outer environment of `b` is GEC). This is because, lexically `b` sits on top of the global environment (i.e. function declared at global level and not inside `a`).
 - This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
 - However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
-
-### **Asynchronous Callbacks**
-
-Asynchronous simply means more than one at a time. But JavaScript, is synchronous, i.e. executes code a line at a time. However, click events or API calls are the callback functions that run when that event is complete or when that action is complete. Apart from the execution stack where execution contexts are being created and stacked on top of each other when functions are called, there is another list that sits inside the JavaScript engine called the __Event Queue__. This event queue is full of events, notifications of events, HTTP calls, etc.
-
-- When the browser, outside the JavaScript engine, has an event that the JS engine should be notified of, it gets placed on the queue. We can listen for that event and have that function handle that event. e.g. a click event.
-- At the same time, if an HTTP event occured due to the previous click event, this HTTP event will be added to the queue and will be executed after the click event is processed (as it is a Queue - FIFO).
-- The Event Queue is looked by the JS engine only after the execution stack is empty. So, any code written at global level will be executed first. And when the stack is empty, then JavaScript periodically looks at the event queue.
-- In case of events, it checks if a particular function should be run when that event was triggered. So it creates the execution context for that function and processes it.
-
-Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how _JavaScript handles asynchronous callbacks_.
 
 ## **JavaScript Types**
 
@@ -721,3 +710,33 @@ In __capturing__, the event travels down the DOM tree from the root to the targe
 
 - If you set a capturing event listener on the <body> and a bubbling listener on a button inside it, the capturing listener will be triggered first, then the bubbling listener.
 - Event capture is disabled by default. To enable it you have to pass the `capture` option in `addEventListener()`.
+
+## **Async JavaScript: Promises and Callbacks**
+
+### **Asynchronous Callbacks**
+
+Asynchronous simply means more than one at a time. But JavaScript is synchronous, i.e. executes code a line at a time. However, click events or API calls are the callback functions that run when that event is complete or when that action is complete. Apart from the _Execution Stack (Call Stack)_ where execution contexts are being created and stacked on top of each other when functions are called, there is another list that sits inside the JavaScript engine called the __Event Queue__. This event queue is full of events, notifications of events, HTTP calls, etc. The __Event Loop__ is a continuous process that monitors the event queue and executes tasks, while the __Event Queue__ is a data structure that holds a list of events waiting to be processed.
+
+__Event Queue:__ also known as a callback queue or task queue, stores events or tasks that are waiting to be executed. When an asynchronous operation completes, its associated callback function is added to the event queue. Events are typically added to the queue in a FIFO (First-In, First-Out) manner, meaning the oldest events are processed first. 
+
+__Event Loop:__ The event loop is a continuously running process that constantly checks the event queue for any pending events. In each iteration, the event loop checks if the call stack (where currently executing code resides) is empty. If it is, the event loop takes the next event from the queue and places its associated callback function onto the call stack for execution. It ensures that asynchronous operations don't block the main thread and that callbacks are executed in a non-blocking manner. 
+
+- The Event Queue is looked by the JS engine only after the execution stack is empty. So, any code written at global level will be executed first.
+- In case of events, it checks if a particular function should be run when that event was triggered. So it creates the execution context for that function when its called and processes it.
+
+Since, the event queue won't be processed until the execution stack is empty, it isn't really asynchronous, only the browser asynchronously is putting things into the event queue, but the code that is running is still running line by line. This is how _JavaScript handles asynchronous callbacks_.
+
+### **Promise** 
+
+The `Promise` object represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future. The eventual state of a pending promise can either be fulfilled with a value or rejected with a reason (error). A Promise is in one of these states:
+
+- pending: initial state, neither fulfilled nor rejected.
+- fulfilled/resolved: meaning that the operation was completed successfully.
+- rejected: meaning that the operation failed.
+
+<img src="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png" width=600 height=400 />
+
+__Chaining asynchronous tasks:__ A common need is to execute two or more asynchronous operations back to back, where each subsequent operation starts when the previous operation succeeds, with the result from the previous step. When using functions as callbacks, in such scenarios, it will lead to _callback hell_. With promises, we accomplish this by creating a promise chain.
+
+-  `then()` method takes up to two arguments; the first argument is a callback function for the fulfilled case of the promise, and the second argument is a callback function for the rejected case.
+-  `catch()` and `finally()` methods call `then()` internally and make error handling less verbose.
