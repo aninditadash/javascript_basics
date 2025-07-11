@@ -23,6 +23,11 @@ A program that reads the code and determines what it does and if its grammar is 
 
 Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
 
+### **Some of the important JavaScript libraries**
+
+- [Lodash](https://lodash.com/) - https://www.npmjs.com/package/lodash
+- Axios
+
 ## **How code is parsed and compiled in Javascript**
 
 __Interpreter:__ An interpreter translates code written in a high-level programming language into machine code line-by-line as the code runs.
