@@ -778,3 +778,5 @@ __How it works for fetch requests:__
 
 - For simple requests (i.e. requests which will always be sent), the server must respond with the correct [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) header or the browser will not share the response with the caller.
 - Unlike simple requests, the browser will send a preflighted request to check that the server understands CORS and allows the request, and the real request will not be sent unless the server responds to the preflighted request with the appropriate CORS headers.
+- Promise returned by fetch() will reject on some errors (network error or a bad scheme). However, if the server responds with an error like 404, then `fetch()` fulfills with a `Response`, so we have to check the status before we can read the response body.
+- The `Response.status` property tells us the numerical status code, and the `Response.ok` property returns true if the status is in the 200 range (common pattern is to check value of ok and throw error if it is false).
