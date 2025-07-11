@@ -765,8 +765,8 @@ The Fetch API provides a JavaScript interface for making HTTP requests and proce
 Whether a request can be made cross-origin or not is determined by the value of the `RequestInit.mode` option. This may take one of three values: cors, same-origin, or no-cors.
 
 - For fetch requests the default value of mode is cors, meaning that if the request is cross-origin then it will use the `Cross-Origin Resource Sharing (CORS)` mechanism.
-
     - For simple requests (i.e. requests which will always be sent), the server must respond with the correct [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) header or the browser will not share the response with the caller.
     - Unlike simple requests, the browser will send a preflighted request to check that the server understands CORS and allows the request, and the real request will not be sent unless the server responds to the preflighted request with the appropriate CORS headers.
 - Setting mode to _same-origin_ disallows cross-origin requests completely.
-- Setting mode to _no-cors_ disables CORS for cross-origin requests. This restricts the headers that may be set, and restricts methods to GET, HEAD, and POST. 
+- Setting mode to _no-cors_ disables CORS for cross-origin requests. This restricts the headers that may be set, and restricts methods to GET, HEAD, and POST.
+
