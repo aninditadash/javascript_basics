@@ -752,5 +752,10 @@ async and await in JavaScript provide a more readable and synchronous-looking wa
 - The await keyword can only be used inside an async function. await pauses the execution of the async function until a Promise is settled (either resolved or rejected).
 - If the awaited Promise resolves, the await expression evaluates to the resolved value of the Promise. If the awaited Promise rejects, the await expression throws the rejected value, which can be caught using a try...catch block.
 
+### **Fetch API**
 
+The Fetch API provides a JavaScript interface for making HTTP requests and processing the responses. It is the modern replacement for `XMLHttpRequest`: unlike XMLHttpRequest, which uses callbacks, Fetch is promise-based and is integrated with features of the modern web such as _service workers and Cross-Origin Resource Sharing (CORS)_.
+
+- The fetch() function returns a Promise which is fulfilled with a Response object representing the server's response.
+- We fetch the response body content as JSON by calling the `json()` method of Response.
 
