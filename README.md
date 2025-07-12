@@ -1,6 +1,6 @@
 ## Introduction to Javascript
 
-JavaScript is a lightweight, cross-platform, object-oriented scripting language used to make webpages interactive. It is an interpreted language that executes code line by line, providing more flexibility. It is a single-threaded programming language that we can use for client-side or server-side development. It is a dynamically typed programming language. JavaScript code is run using the **V8 Engine** in the Chrome browser or **SpiderMonkey** in Firefox. [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model] It provides the following features:
+JavaScript is a lightweight, cross-platform, object-oriented scripting language used to make webpages interactive. It is an interpreted language that executes code line by line, providing more flexibility. It is single-threaded and dynamically typed and is used for client-side or server-side development. JavaScript code is run using the **V8 Engine** in the Chrome browser or **SpiderMonkey** in Firefox, etc. [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model] It provides the following features:
 
 - **Browser Support:** All browsers support JavaScript, as all modern browser comes with the built-in JavaScript execution environment.
 - **Dom Manipulation:** JavaScript allows manipulation of the webpage elements, as it contains the various methods to access the DOM elements using different attributes and allows to customize the HTML elements.
@@ -23,7 +23,18 @@ A program that reads the code and determines what it does and if its grammar is 
 
 Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
 
-### **Some of the important JavaScript libraries**
+### **Script loading strategies**
+
+`<script>` HTML element is used to embed executable code or data, typically used to embed or refer to JavaScript code. The JS script loading strategies determine how and when scripts are fetched and executed in a web page, impacting performance and user experience.
+
+- Scripts without `async`, `defer` or `type="module"` attributes, and inline scripts without `type="module"` attribute, are fetched and executed immediately before the browser continues to parse the page.
+- Scripts loaded using the `async` attribute will download the script without blocking the page while the script is being fetched. However, once the download is complete, the script will execute, which blocks the page from rendering. This means that the rest of the content on the web page is prevented from being processed and displayed to the user until the script finishes executing. And there is no guarantee that scripts will run in any specific order. Use `async` when the scripts in the page run independently from each other and depend on no other script on the page.
+- Scripts loaded with the `defer` attribute will load in the order they appear on the page. They won't run until the page content has all loaded, which is useful if the scripts depend on the DOM being in place.
+
+<br/>
+<img src="https://html.spec.whatwg.org/images/asyncdefer.svg" width=900 height=500 />
+
+#### **Some important JavaScript libraries**
 
 - [Lodash](https://lodash.com/) - https://www.npmjs.com/package/lodash
 - [Axios](https://axios-http.com/docs/intro) -https://www.npmjs.com/package/axios
