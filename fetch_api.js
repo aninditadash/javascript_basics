@@ -16,9 +16,8 @@ async function fetchAllUsers() {
     const data = await response.json();
     users = data;
     console.log("Users fetched successfully: ", data);
-    createPost();
   } catch (error) {
-    console.error("Error fetching posts:", error);
+    console.error("Error fetching users:", error);
   }
 }
 
@@ -38,6 +37,7 @@ async function fetchAllPosts() {
     const data = await response.json();
     posts = data;
     console.log("Posts fetched successfully: ", data);
+    createPost();
   } catch (error) {
     console.error("Error fetching posts: ", error);
   }
@@ -76,7 +76,7 @@ const fetchPostByIDWithParams = async (id) => {
   }
 };
 
-// Fetch a post by post ID
+// Fetch a post by post ID - Returns an array
 fetchPostByIDWithParams(1);
 
 const fetchPostByID = async (postId) => {
@@ -101,7 +101,7 @@ const fetchPostByID = async (postId) => {
   }
 };
 
-// Fetch a post by post ID
+// Fetch a post by post ID - Returns an object
 fetchPostByID(2);
 
 async function createPost() {
@@ -133,6 +133,7 @@ async function createPost() {
 const updatePost = async (post) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json; charset=UTF-8");
+
   try {
     await sleep(500);
     console.log("Updating post ", post);
@@ -163,6 +164,7 @@ const updatePost = async (post) => {
 const partiallyUpdatePost = async ({ id }) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json; charset=UTF-8");
+
   try {
     await sleep(500);
     console.log("Patching post with id: ", id);
@@ -191,6 +193,7 @@ const partiallyUpdatePost = async ({ id }) => {
 const deletePost = async ({ id }) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json; charset=UTF-8");
+
   try {
     await sleep(500);
     console.log("Deleting post with id: ", id);
@@ -205,7 +208,7 @@ const deletePost = async ({ id }) => {
       throw new Error(`Response status: ${response.status}`);
     }
     const data = await response.json();
-    console.log("Post deleted successfully!!");
+    console.log("Post deleted successfully!!", data);
   } catch (error) {
     console.error("Error deleting a post:", error);
   }
@@ -234,10 +237,11 @@ const fetchPostByUserID = async (userId) => {
       throw new Error(`Response status: ${response.status}`);
     }
     const data = await response.json();
-    console.log(`Post fetched successfully (user id = ${userId}): `, data);
+    console.log(`Posts fetched successfully (user id = ${userId}): `, data);
   } catch (error) {
     console.error("Error fetching post: ", error);
   }
 };
 
+// Fetch a post by user ID
 fetchPostByUserID(1);
