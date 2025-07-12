@@ -692,6 +692,8 @@ __Array reduce() Method:__ iterates over an array, applying a reducer function t
   - accumulator (acc): It holds the accumulated value from the previous iterations. In the first iteration, if an initialValue is provided, the accumulator starts with that value. Otherwise, it starts with the first element of the array.
   - currentValue (curr): It represents the current element being processed in the iteration.
 
+__Array.from() Method:__ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+
 ### **Maps**
 
 A Map object is a key/value map that can iterate its elements in insertion order.
