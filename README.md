@@ -49,7 +49,7 @@ __JIT Compiler:__ A JIT compiler converts code into byte code first. Then, at ru
 
 __Abstract Syntax Tree (AST):__ The AST is a hierarchical, tree-like representation of the code's structure, reflecting its syntax and relationships between different elements.
 
-### __Byte Code vs Machine Code (Object code):__
+__Byte Code vs Machine Code (Object code):__
 Byte code is an intermediate code between the source code and machine code. It is a low-level code that is the result of the compilation of a source code which is written in a high-level language.
 -  Byte code is considered as the intermediate-level code and Machine Code as low-level code.
 -  Byte code is a non-runnable code generated after compilation of source code and it relies on an interpreter to get executed.
