@@ -26,7 +26,7 @@ Where something sits physically in the code we write. Lexical means having to do
 ### **Some of the important JavaScript libraries**
 
 - [Lodash](https://lodash.com/) - https://www.npmjs.com/package/lodash
-- Axios
+- [Axios](https://axios-http.com/docs/intro) -https://www.npmjs.com/package/axios
 
 ## **How code is parsed and compiled in Javascript**
 
