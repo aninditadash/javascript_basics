@@ -667,7 +667,7 @@ When a class declaration or class expression is evaluated, its various component
 - The class is now initialized with the prototype specified by extends and implementation specified by constructor.
 
 
-## **Iterables and Arrays**
+## **Iterators, Generators and Arrays**
 
 ### **Iterators**
 
@@ -705,6 +705,8 @@ A Map object is a key/value map that can iterate its elements in insertion order
 Set objects are collections of unique values, we can iterate its elements in insertion order. A value in a Set may only occur once; it is unique in the Set's collection. The insertion order corresponds to the order in which each element was inserted into the set by the add() method successfully.
 
 - We can create an Array from a Set using `Array.from` or the `spread syntax`. Also, the Set constructor accepts an Array to convert in the other direction.
+
+## **Meta programming: Proxy and Reflect APIs**
 
 ## **Introduction to events**
 
