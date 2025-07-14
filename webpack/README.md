@@ -33,8 +33,11 @@ import("./modules/myModule.js").then((module) => {
 
 Webpack is a static module bundler for modern JavaScript applications. 
 When webpack processes an application, it internally builds a dependency graph from one 
-or more entry points and then combines every module that the project needs into one or more bundles, 
-which are static assets which serves the content. For more details on setup, refer https://webpack.js.org/guides/getting-started/#basic-setup.
+or more entry points and then combines every module that the project needs into one or more bundles, which are static assets which serves the content. For more details on setup, refer https://webpack.js.org/guides/getting-started/#basic-setup.
+
+- The `import` and `export` statements have been standardized in ES2015. They are supported in most of the browsers at this moment, however there are some browsers that don't recognize the new syntax.
+- Behind the scenes, webpack actually "transpiles" the code so that older browsers can also run it.
+- If you are using other ES2015 features, make sure to use a transpiler such as __Babel__ via webpack's loader system.
 
 #### **Entry**
 
@@ -52,10 +55,15 @@ for any other generated file. But, it can be configured.
 
 By setting the mode parameter to either `development`, `production` or `none`, we can enable webpack's built-in optimizations that correspond to each environment. The _default value is production_.
 
+#### **Plugins**
+
+While loaders are used to transform certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management and injection of environment variables.
+
 
 webpack.config.js
 ```
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: "./src/app.js",
@@ -64,5 +72,12 @@ module.exports = {
     filename: "main.js",
   },
   mode: "development",
+  plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
 };
 ```
+
+#### **Asset Management (Loaders)**
+
+Out of the box, webpack only understands JavaScript and JSON files. Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependency graph.
+
+- In order to import a CSS file from within a JavaScript module, we need to install and add the `style-loader` and `css-loader` to the module configuration.
