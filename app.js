@@ -1,11 +1,10 @@
-const greet = () => {
-  console.log("Hi");
+const { fetchAllUsers } = require("./axios_rest_api");
+
+const initApp = () => {
+  // Initializes the app
+  console.log("JavaScript Basics");
+  fetchAllUsers();
 };
 
-const showAlert = () => {
-  alert("Danger!");
-};
-
-setTimeout(showAlert, 2000);
-
-greet();
+// Start the app!
+initApp();

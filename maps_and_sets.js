@@ -1,5 +1,4 @@
 // Maps
-
 const myMap = new Map();
 myMap.set("name", "Alice");
 myMap.set(1, "One");
@@ -23,7 +22,6 @@ for (const [key, value] of myMap.entries()) {
 console.log("================================================");
 
 // Sets
-
 const mySet = new Set();
 mySet.add(1);
 mySet.add("some text");
@@ -40,7 +38,6 @@ for (const [key, value] of mySet.entries()) {
 }
 
 // Array and Set Conversion
-
 const myArray = [1, 2, 3, 4, 5, 6, 6];
 const mySet2 = new Set(myArray);
 console.log(mySet2);

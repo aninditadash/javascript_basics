@@ -17,7 +17,7 @@ async function fetchAllUsers() {
   }
 }
 
-fetchAllUsers();
+// fetchAllUsers();
 
 async function fetchAllPosts() {
   try {
@@ -154,3 +154,5 @@ const deletePost = async ({ id }) => {
     console.error("Error deleting a post:", error);
   }
 };
+
+exports.fetchAllUsers = fetchAllUsers;
