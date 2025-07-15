@@ -59,6 +59,9 @@ By setting the mode parameter to either `development`, `production` or `none`, w
 
 While loaders are used to transform certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management and injection of environment variables.
 
+- _HtmlWebpackPlugin_
+- _TerserWebpackPlugin_ is a Webpack plugin that uses Terser to minify (optimize) JavaScript code during the build process. Primarily used to reduce the size of JavaScript files, leading to faster load times and improved performance in web applications.
+- _MiniCssExtractPlugin_ extracts CSS into separate files, enabling features like on-demand loading and improved caching. Typically used in production builds to create individual CSS files for each JavaScript file containing CSS, improving load times and avoiding Flash of Unstyled Content (FOUC). 
 
  **`webpack.config.js`**
 ```
