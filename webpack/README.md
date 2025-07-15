@@ -25,7 +25,7 @@ import("./modules/myModule.js").then((module) => {
 ```
 
 - Import declarations are hoisted. In this case, it means that the imported values are available in the module's code even before the place that declares them, and that the imported module's side effects are produced before the rest of the module's code starts running.
-- _Cyclic imports_ arises if `module a` imports `module b`, but `b` directly or indirectly depends on `a`.[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#cyclic_imports]
+- _Cyclic imports_ arises if `module a` imports `module b`, but `b` directly or indirectly depends on `a`.<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#cyclic_imports>
 
 <br/>
 
