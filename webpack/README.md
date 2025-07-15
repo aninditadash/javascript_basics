@@ -60,7 +60,7 @@ By setting the mode parameter to either `development`, `production` or `none`, w
 While loaders are used to transform certain types of modules, plugins can be leveraged to perform a wider range of tasks like bundle optimization, asset management and injection of environment variables.
 
 
-webpack.config.js
+ **`webpack.config.js`**
 ```
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
