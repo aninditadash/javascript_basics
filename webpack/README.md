@@ -105,7 +105,9 @@ A CDN, or content delivery network, caches content (such as images, videos, or w
 
 - When a user requests content from a website using a CDN, the CDN fetches that content from an origin server, and then saves a copy of the content for future requests.
 - Cached content remains in the CDN cache as long as users continue to request it.
-
+- A __cache hit__ is when a client device makes a request to the cache for content, and the cache has that content saved. A cache hit means that the content will be able to load much more quickly, since the CDN can immediately deliver it to the end user.
+- A __cache miss__ occurs when the cache does not have the requested content. In this case, a CDN server will pass the request along to the origin server, then cache the content once the origin server responds, so that subsequent requests will result in a cache hit.
+- CDN caching servers are located in data centers all over the globe.
 
 
 
