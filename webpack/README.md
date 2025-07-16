@@ -84,3 +84,29 @@ module.exports = {
 Out of the box, webpack only understands JavaScript and JSON files. Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependency graph.
 
 - In order to import a CSS file from within a JavaScript module, we need to install and add the `style-loader` and `css-loader` to the module configuration.
+
+<br />
+
+## **Caching**
+
+Caching is the process of storing copies of files in a cache, or temporary storage location, so that they can be accessed more quickly. Technically, a cache is any temporary storage location for copies of files or data. Web browsers cache HTML files, JavaScript, and images in order to load websites more quickly, while DNS servers cache DNS records for faster lookups and CDN servers cache content to reduce latency. <https://www.cloudflare.com/learning/cdn/what-is-caching/>
+
+### **Browser caching**
+
+- Every time a user loads a webpage, browser has to download data in order to display that webpage.
+- To shorten page load times, browsers cache most of the content that appears on the webpage, saving a copy of the webpage's content on the device’s hard drive (desktop/mobile).
+- So, next time when the webpage is loaded, it will be faster as most of the content is already stored locally.
+- Browsers store these files until their _time to live (TTL)_ expires or until the hard drive cache is full. (TTL is an indication of how long content should be cached.) Users can also clear their browser cache if desired.
+- Once a browser cache is cleared, every webpage that loads will load as if it is the first time the user has visited the page.
+
+### **CDN caching**
+
+A CDN, or content delivery network, caches content (such as images, videos, or webpages) in proxy servers that are located closer to end users than origin servers. (A proxy server is a server that receives requests from clients and passes them along to other servers.) Because the servers are closer to the user making the request, a CDN is able to deliver content more quickly.
+
+- When a user requests content from a website using a CDN, the CDN fetches that content from an origin server, and then saves a copy of the content for future requests.
+- Cached content remains in the CDN cache as long as users continue to request it.
+
+
+
+
+
