@@ -115,6 +115,10 @@ A [CDN](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/), or content deli
 - The websites responding to CDN servers with the requested content attach the content’s TTL as well, letting the servers know how long to store it. TTL is stored as part of the HTTP header, specifying how many seconds, minutes, or hours content will be cached.
 - When the TTL expires, the cache removes the content. Some CDNs will also purge files from the cache early if the content is not requested for a while, or if a CDN customer manually purges certain content.
 
+<br />
+
+## **Module Federation**
+
 
 
 
