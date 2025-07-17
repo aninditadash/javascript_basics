@@ -2,7 +2,7 @@
 
 Complex projects necessitate a mechanism for splitting JavaScript programs into separate modules that can be imported when needed. In JavaScript, modules are a fundamental feature for organizing, structuring, and reusing code. A module is simply a chunk of code that can be reused in different parts of a program or even in different programs. A module needs to be able to perform a single or a related group of tasks. JavaScript’s modularity is key to managing complexity, especially for large applications. Modules can contain: variables, functions, classes and objects. JavaScript provides two primary module systems: 
 
-__CommonJS Modules:__  In JavaScript, CommonJS is a module system primarily used in NodeJS environments. It helps to break down code into reusable modules by using `module.exports` to export functions, objects, or variables from a module. Other modules can then access these exports using the `require()` function. Modules are loaded synchronously, meaning execution waits until the module is fully loaded before continuing. Each CommonJS module runs in its own scope, preventing variable conflicts and making code modular and reusable.
+__CommonJS Modules:__ In JavaScript, CommonJS is a module system primarily used in NodeJS environments. It helps to break down code into reusable modules by using `module.exports` to export functions, objects, or variables from a module. Other modules can then access these exports using the `require()` function. Modules are loaded synchronously, meaning execution waits until the module is fully loaded before continuing. Each CommonJS module runs in its own scope, preventing variable conflicts and making code modular and reusable.
 
 __ES6 module:__ ES6 Modules (ECMAScript Modules) provide a standardized way to structure and organize JavaScript code into separate, reusable modules. Unlike CommonJS, ES6 Modules use the import and export keywords for handling exports and imports. In JavaScript, setting `"type": "module"` in  package.json tells NodeJS to treat `.js` files as ES6 modules, enabling import and export syntax. With ES6 modules, NodeJS expects static import and export statements, which are optimized at compile time, leading to smaller bundles. 
 
@@ -41,14 +41,11 @@ or more entry points and then combines every module that the project needs into 
 
 #### **Entry**
 
-An **entry point** indicates which module webpack should use to begin building out its internal 
-dependency graph. Webpack will figure out which other modules and libraries that entry point depends on (directly and indirectly).
-By default its value is `./src/index.js`, but we can specify a different (or multiple) entry points by setting an entry property in the `webpack.config.js` file.
+An **entry point** indicates which module webpack should use to begin building out its internal dependency graph. Webpack will figure out which other modules and libraries that entry point depends on (directly and indirectly). By default its value is `./src/index.js`, but we can specify a different (or multiple) entry points by setting an entry property in the `webpack.config.js` file.
 
 #### **Output**
 
-The **output** property tells webpack where to emit the bundles 
-it creates and how to name these files. It defaults to `./dist/main.js` for the main output file and to the `./dist` folder 
+The **output** property tells webpack where to emit the bundles it creates and how to name these files. It defaults to `./dist/main.js` for the main output file and to the `./dist` folder 
 for any other generated file. But, it can be configured.
 
 #### **Mode**
@@ -63,7 +60,13 @@ While loaders are used to transform certain types of modules, plugins can be lev
 - _TerserWebpackPlugin_ is a Webpack plugin that uses Terser to minify (optimize) JavaScript code during the build process. Primarily used to reduce the size of JavaScript files, leading to faster load times and improved performance in web applications.
 - _MiniCssExtractPlugin_ extracts CSS into separate files, enabling features like on-demand loading and improved caching. Typically used in production builds to create individual CSS files for each JavaScript file containing CSS, improving load times and avoiding Flash of Unstyled Content (FOUC). 
 
- **`webpack.config.js`**
+#### **Asset Management (Loaders)**
+
+Out of the box, webpack only understands JavaScript and JSON files. Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependency graph.
+
+- In order to import a CSS file from within a JavaScript module, we need to install and add the `style-loader` and `css-loader` to the module configuration.
+
+**`webpack.config.js`**
 ```
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -75,15 +78,16 @@ module.exports = {
     filename: "main.js",
   },
   mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      }
+  ],
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
 };
 ```
-
-#### **Asset Management (Loaders)**
-
-Out of the box, webpack only understands JavaScript and JSON files. Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependency graph.
-
-- In order to import a CSS file from within a JavaScript module, we need to install and add the `style-loader` and `css-loader` to the module configuration.
 
 <br />
 
@@ -96,7 +100,7 @@ Caching is the process of storing copies of files in a cache, or temporary stora
 - Every time a user loads a webpage, browser has to download data in order to display that webpage.
 - To shorten page load times, browsers cache most of the content that appears on the webpage, saving a copy of the webpage's content on the device’s hard drive (desktop/mobile).
 - So, next time when the webpage is loaded, it will be faster as most of the content is already stored locally.
-- Browsers store these files until their _time to live (TTL)_ expires or until the hard drive cache is full. (TTL is an indication of how long content should be cached.) Users can also clear their browser cache if desired.
+- Browsers store these files until their _time to live (TTL)_ expires or until the hard drive cache is full (TTL is an indication of how long content should be cached). Users can also clear their browser cache if desired.
 - Once a browser cache is cleared, every webpage that loads will load as if it is the first time the user has visited the page.
 
 ### **CDN caching**
