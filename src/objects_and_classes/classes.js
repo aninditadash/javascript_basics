@@ -5,6 +5,8 @@ class Circle {
     return 2 * Circle.PI * radius;
   }
 
+  diameter = 0;
+
   constructor(radius) {
     this.radius = radius;
   }

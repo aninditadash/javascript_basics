@@ -1,3 +1,5 @@
+import axios from "axios";
+
 let users = [],
   posts = [];
 
@@ -5,7 +7,7 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-async function fetchAllUsers() {
+export async function fetchAllUsers() {
   try {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/users"
@@ -154,5 +156,3 @@ const deletePost = async ({ id }) => {
     console.error("Error deleting a post:", error);
   }
 };
-
-exports.fetchAllUsers = fetchAllUsers;

@@ -1,11 +1,12 @@
 {
-  "name": "js-testing-introduction",
+  "name": "js-basics",
   "version": "1.0.0",
-  "description": "An introduction to JS testing",
-  "main": "app.js",
+  "description": "An introduction to basics of JavaScript",
+  "private": true,
   "scripts": {
-    "start": "webpack app.js --mode development --watch",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "dev": "webpack serve --config webpack.dev.config.js --hot",
+    "build": "webpack --config webpack.prod.config.js"
   },
   "keywords": [
     "js",
@@ -19,14 +20,29 @@
     "e2e",
     "tests"
   ],
-  "author": "Maximilian Schwarzmüller/ Academind GmbH",
-  "license": "ISC",
+  "author": "Anindita Dash",
+  "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
     "jest": "^30.0.4",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "mini-css-extract-plugin": "^2.9.2",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.14",
+    "tslib": "^2.8.1",
+    "webpack": "^5.100.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "5.2.0"
   },
   "dependencies": {
-    "axios": "^1.10.0"
+    "axios": "^1.10.0",
+    "babel-jest": "^30.0.4",
+    "lodash": "^4.17.21",
+    "react": "^19.1.0"
   }
 }

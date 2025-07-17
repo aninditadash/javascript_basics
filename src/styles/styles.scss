@@ -6,6 +6,7 @@ div {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 button {
   width: 200px;
@@ -25,4 +26,7 @@ li {
 }
 h5 {
   margin: 1rem 0;
+}
+img {
+  margin: 20px 0;
 }
