@@ -126,10 +126,11 @@ A [CDN](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/), or content deli
 
 <br />
 
-## **ESLint**
+### **ESLint**
 
-https://eslint.org/docs/latest/use/configure/configuration-files
-https://eslint.org/docs/latest/rules/
-
+Some useful links: 
+- <https://eslint.org/docs/latest/use/configure/configuration-files>
+- <https://eslint.org/docs/latest/rules/>
+- <https://www.raulmelo.me/en/blog/migration-eslint-to-flat-config>
 
 
