@@ -124,4 +124,12 @@ A [CDN](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/), or content deli
 ## **Module Federation**
 
 
+<br />
+
+## **ESLint**
+
+https://eslint.org/docs/latest/use/configure/configuration-files
+https://eslint.org/docs/latest/rules/
+
+
 
