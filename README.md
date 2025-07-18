@@ -685,6 +685,16 @@ An object is iterable if it defines its iteration behavior, such as what values 
 - It may be possible to iterate over an iterable more than once, or only once.
 - Iterables which can iterate only once (such as Generators) customarily return `this` from their [Symbol.iterator]() method, whereas iterables which can be iterated many times must return a new iterator on each invocation of [Symbol.iterator]().
 
+### **Generator functions**
+
+Custom iterators creation requires the need to explicitly maintain their internal state. Generator functions provide a powerful alternative: they allow to define an iterative algorithm by writing a single function whose execution is not continuous. Generator functions are written using the `function*` syntax.
+
+- When called, generator functions do not initially execute their code.
+- Instead, they return a special type of iterator, called a Generator.
+- When a value is consumed by calling the generator's next method, the Generator function executes until it encounters the yield keyword.
+- The function can be called as many times as desired, and returns a new Generator each time.
+- Each Generator may only be iterated once.
+
 __Array reduce() Method:__ iterates over an array, applying a reducer function to each element, accumulating a single output value. It takes an initial value and processes elements from left to right, reducing the array to a single result.
 
 - It takes a callback function as its first argument.
