@@ -14,14 +14,13 @@ export async function fetchAllUsers() {
     );
     users = response?.data;
     console.log("Users fetched successfully: ", users);
+    return users;
   } catch (error) {
     console.error("Error fetching users:", error.message);
   }
 }
 
-// fetchAllUsers();
-
-async function fetchAllPosts() {
+export async function fetchAllPosts() {
   try {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/posts"
@@ -34,9 +33,8 @@ async function fetchAllPosts() {
   }
 }
 
-fetchAllPosts();
-
-const fetchPostByPostID = async (postId) => {
+// Fetch a post by post ID - Returns an array
+export const fetchPostByPostID = async (postId) => {
   try {
     const response = await axios.get(
       `https://jsonplaceholder.typicode.com/posts?id=${postId}`
@@ -48,10 +46,8 @@ const fetchPostByPostID = async (postId) => {
   }
 };
 
-// Fetch a post by post ID - Returns an array
-fetchPostByPostID(1);
-
-const fetchPostByID = async (postId) => {
+// Fetch a post by post ID - Returns an object
+export const fetchPostByID = async (postId) => {
   try {
     const response = await axios.get(
       `https://jsonplaceholder.typicode.com/posts/${postId}`
@@ -63,10 +59,8 @@ const fetchPostByID = async (postId) => {
   }
 };
 
-// Fetch a post by post ID - Returns an object
-fetchPostByID(2);
-
-const fetchPostByUserID = async (userId) => {
+// Fetch a post by user ID
+export const fetchPostByUserID = async (userId) => {
   try {
     const response = await axios.get(
       `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
@@ -78,11 +72,7 @@ const fetchPostByUserID = async (userId) => {
   }
 };
 
-// Fetch a post by user ID
-fetchPostByUserID(1);
-fetchPostByUserID(2);
-
-async function createPost() {
+export async function createPost() {
   try {
     await sleep(2);
     const postObj = {
@@ -102,7 +92,7 @@ async function createPost() {
   }
 }
 
-const updatePost = async (post) => {
+export const updatePost = async (post) => {
   try {
     await sleep(500);
     console.log("Updating post with id: ", post?.id);
@@ -123,7 +113,7 @@ const updatePost = async (post) => {
   }
 };
 
-const partiallyUpdatePost = async ({ id }) => {
+export const partiallyUpdatePost = async ({ id }) => {
   try {
     await sleep(500);
     console.log("Patching post with id: ", id);
@@ -143,7 +133,7 @@ const partiallyUpdatePost = async ({ id }) => {
   }
 };
 
-const deletePost = async ({ id }) => {
+export const deletePost = async ({ id }) => {
   try {
     await sleep(500);
     console.log("Deleting post with id: ", id);

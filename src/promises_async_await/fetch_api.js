@@ -5,7 +5,7 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-async function fetchAllUsers() {
+export async function fetchAllUsers() {
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/users", {
       method: "GET",
@@ -16,37 +16,35 @@ async function fetchAllUsers() {
     const data = await response.json();
     users = data;
     console.log("Users fetched successfully: ", data);
+    return data;
   } catch (error) {
     console.error("Error fetching users:", error);
   }
 }
 
-fetchAllUsers();
-
-async function fetchAllPosts() {
-  try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
+export const fetchAllPosts = () => {
+  return fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      posts = data;
+      console.log("Posts fetched successfully: ", data);
+      return data;
+    })
+    .catch((error) => {
+      console.error("Error fetching posts: ", error);
     });
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    const data = await response.json();
-    posts = data;
-    console.log("Posts fetched successfully: ", data);
-    createPost();
-  } catch (error) {
-    console.error("Error fetching posts: ", error);
-  }
-}
+};
 
-fetchAllPosts();
-
+// Fetch a post by post ID - Returns an array
 // Sending data in a GET request (get a post by POST ID)
-const fetchPostByIDWithParams = async (id) => {
+export const fetchPostByIDWithParams = async (id) => {
   const baseUrl = "https://jsonplaceholder.typicode.com/posts";
   const params = {
     id,
@@ -76,10 +74,8 @@ const fetchPostByIDWithParams = async (id) => {
   }
 };
 
-// Fetch a post by post ID - Returns an array
-fetchPostByIDWithParams(1);
-
-const fetchPostByID = async (postId) => {
+// Fetch a post by post ID - Returns an object
+export const fetchPostByID = async (postId) => {
   try {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${postId}`,
@@ -101,10 +97,7 @@ const fetchPostByID = async (postId) => {
   }
 };
 
-// Fetch a post by post ID - Returns an object
-fetchPostByID(2);
-
-async function createPost() {
+export async function createPost() {
   try {
     await sleep(2);
     const postObj = {
@@ -130,7 +123,7 @@ async function createPost() {
   }
 }
 
-const updatePost = async (post) => {
+export const updatePost = async (post) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json; charset=UTF-8");
 
@@ -161,7 +154,7 @@ const updatePost = async (post) => {
   }
 };
 
-const partiallyUpdatePost = async ({ id }) => {
+export const partiallyUpdatePost = async ({ id }) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json; charset=UTF-8");
 
@@ -190,7 +183,7 @@ const partiallyUpdatePost = async ({ id }) => {
   }
 };
 
-const deletePost = async ({ id }) => {
+export const deletePost = async ({ id }) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json; charset=UTF-8");
 
@@ -214,7 +207,8 @@ const deletePost = async ({ id }) => {
   }
 };
 
-const fetchPostByUserID = async (userId) => {
+// Fetch a post by user ID
+export const fetchPostByUserID = async (userId) => {
   const baseUrl = "https://jsonplaceholder.typicode.com/posts";
   const params = {
     userId,
@@ -238,10 +232,8 @@ const fetchPostByUserID = async (userId) => {
     }
     const data = await response.json();
     console.log(`Posts fetched successfully (user id = ${userId}): `, data);
+    return data;
   } catch (error) {
     console.error("Error fetching post: ", error);
   }
 };
-
-// Fetch a post by user ID
-fetchPostByUserID(1);

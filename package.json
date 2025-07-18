@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest --watch",
-    "dev": "webpack serve --config webpack.dev.config.js --hot",
-    "build": "webpack --config webpack.prod.config.js"
+    "dev": "webpack serve --config webpack.config.js --hot",
+    "build": "webpack --config webpack.config.prod.js"
   },
   "keywords": [
     "js",
@@ -25,8 +25,11 @@
   "devDependencies": {
     "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
+    "@eslint/js": "^9.31.0",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
+    "eslint": "^9.31.0",
+    "globals": "^16.3.0",
     "html-webpack-plugin": "^5.6.3",
     "jest": "^30.0.4",
     "mini-css-extract-plugin": "^2.9.2",
