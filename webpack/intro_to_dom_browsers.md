@@ -12,6 +12,13 @@ __IndexedDB:__ A more advanced, transactional database that can store structured
 
 <br />
 
+## **Cross Site Scripting (XSS)**
+
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. These scripts can then execute in the context of the user's browser, potentially allowing attackers to steal session cookies, redirect users to malicious sites, or modify the content of the HTML page. 
+
+
+<br />
+
 ## **CORS**
 
 
