@@ -9,6 +9,7 @@ import {
 } from './promises_async_await/promises';
 import './styles/styles.scss';
 import upperCase from 'lodash/upperCase';
+import './functions_and_operators/iterators_generators';
 
 const initApp = () => {
   // Initializes the app
