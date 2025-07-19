@@ -54,5 +54,15 @@ In a cross-site request forgery (CSRF) attack, an attacker tricks the user or th
 
 ## **CORS**
 
+[Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) is an HTTP-header based mechanism and is a security feature implemented by web browsers to control how web pages from one domain can interact with resources from a different domain. CORS also relies on a mechanism by which browsers make a "preflight" request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends headers that indicate the HTTP method and headers that will be used in the actual request. _Example of a cross-origin request:_ the front-end JavaScript code served from https://domain-a.com uses `fetch()` to make a request for https://domain-b.com/data.json. 
 
+- For security reasons, browsers restrict cross-origin HTTP requests initiated from scripts.
+- `fetch()` and `XMLHttpRequest` follow the same-origin policy, meaning that web application using those APIs can only request resources from the same origin the application was loaded from unless the response from other origins includes the right CORS headers.
 
+<img src="https://mdn.github.io/shared-assets/images/diagrams/http/cors/fetching-page-cors.svg" width=700 />
+
+- CORS standard works by adding new HTTP headers that let servers describe which origins are permitted to read that information from a web browser.
+- For HTTP request methods that can cause side-effects on server data (other than GET, or POST), the specification mandates that browsers "preflight" the request, soliciting supported methods from the server with the _HTTP OPTIONS_ request method, and then, upon "approval" from the server, sending the actual request.
+- Servers can also inform clients whether "credentials" (such as Cookies) should be sent with requests.
+- __Simple requests:__ these requests don't trigger a CORS preflight. (GET, HEAD, POST)
+- __Preflighted requests:__ Unlike simple requests, for "preflighted" requests the browser first sends an HTTP request using the OPTIONS method to the resource on the other origin, in order to determine if the actual request is safe to send. Such cross-origin requests are preflighted since they may have implications for user data.
