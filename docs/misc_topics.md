@@ -1,3 +1,10 @@
+## **Overview of HTTP**
+
+[HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) is a protocol for fetching resources such as HTML documents, it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. Clients and servers communicate by exchanging individual messages, messages sent by the client are called requests and the messages sent by the server as an answer are called responses.
+
+- __HTTP is stateless, but not sessionless:__ HTTP is stateless: there is no link between two requests being successively carried out on the same connection. However, HTTP cookies allow the use of stateful sessions. Using header extensibility, HTTP Cookies are added to the workflow, allowing session creation on each HTTP request to share the same context, or the same state.
+
+
 ## **Web Storage API**
 
 The Web Storage API provides mechanisms by which browsers can store key/value pairs (instead of using cookies). The two mechanisms within Web Storage:
@@ -24,6 +31,26 @@ XSS attacks can generally be categorized into three categories:
 - __Reflected XSS:__ The injected script is part of the HTTP request and is reflected back to the user in the server's response. This often occurs through error messages, links or search results. 
 -  __Stored XSS:__ The injected script is stored on the server (e.g., in a database or comment section) and the victim then retrieves the malicious script from the server when it requests the stored information.
 - __DOM Based XSS:__ here the attack payload is executed as a result of modifying the DOM “environment” in the victim’s browser used by the original client side script, so that the client side code runs in an “unexpected” manner. That is, the page itself (the HTTP response that is) does not change, but the client side code contained in the page executes differently due to the malicious modifications that have occurred in the DOM environment.
+
+### **Defenses against XSS**
+
+- Use output encoding and sanitization to prevent input from becoming executable. When rendering content in the browser, ensure that input is being passed through a sanitization function before being included in the page.
+- Use a Content Security Policy (CSP) to tell the browser which JavaScript or CSS resources it should be allowed to execute. 
+
+_Output encoding_ is the process by which characters in the input string that potentially make it dangerous are escaped, so they are treated as text instead of being treated as part of a language like HTML.
+
+_Sanitization_ is the process of removing unsafe features from a string of HTML: for example, <script> tags or inline event handlers.
+
+## **Cross-site request forgery (CSRF)**
+
+In a cross-site request forgery (CSRF) attack, an attacker tricks the user or the browser into making an HTTP request to the target site from a malicious site. The request includes the user's credentials and causes the server to carry out some harmful action, thinking that the user intended it. How CSRF Works:
+
+- A user logs into a website (e.g., a banking site) and their browser stores a session cookie.
+- An attacker creates a malicious link or form, often disguised within an email or on a seemingly unrelated website.
+- A user, unknowingly, clicks the link or submits the form, which triggers a request to the target website.
+- Because the user is already authenticated, their browser automatically includes the session cookie in the malicious request.
+- The target website, believing the request is legitimate due to the included cookie, performs the action specified in the malicious request (e.g., transferring money, changing a password).
+- CSRF attacks can lead to unauthorized account access, fraudulent transactions, or other malicious actions. 
 
 ## **CORS**
 
