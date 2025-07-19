@@ -10,14 +10,20 @@ The Web Storage API provides mechanisms by which browsers can store key/value pa
 
 __IndexedDB:__ A more advanced, transactional database that can store structured data, including complex JavaScript objects, and offers a larger storage capacity than localStorage and sessionStorage. It is suitable for storing larger datasets and more complex data structures. 
 
-<br />
-
 ## **Cross Site Scripting (XSS)**
 
-Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. These scripts can then execute in the context of the user's browser, potentially allowing attackers to steal session cookies, redirect users to malicious sites, or modify the content of the HTML page. 
+[Cross-Site Scripting (XSS)](http://owasp.org/www-community/attacks/xss/) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. These scripts can then execute in the context of the user's browser, potentially allowing attackers to steal session cookies, redirect users to malicious sites, or modify the content of the HTML page. Cross-Site Scripting (XSS) attacks occur when:
+ 
+- Data enters a web application through an untrusted source, most frequently a web request.
+- Data is included in dynamic content that is sent to a web user without being validated for malicious content.
+- This malicious content sent to the web browser may take the form of a script tags, HTML, or any code that the browser may execute.
+- XSS attacks commonly include transmitting private data, like cookies or other session information, to the attacker, redirecting the victim to web content controlled by the attacker, or performing other malicious operations on the user’s machine under the guise of the vulnerable site.
 
+XSS attacks can generally be categorized into three categories: 
 
-<br />
+- __Reflected XSS:__ The injected script is part of the HTTP request and is reflected back to the user in the server's response. This often occurs through error messages, links or search results. 
+-  __Stored XSS:__ The injected script is stored on the server (e.g., in a database or comment section) and the victim then retrieves the malicious script from the server when it requests the stored information.
+- __DOM Based XSS:__ here the attack payload is executed as a result of modifying the DOM “environment” in the victim’s browser used by the original client side script, so that the client side code runs in an “unexpected” manner. That is, the page itself (the HTTP response that is) does not change, but the client side code contained in the page executes differently due to the malicious modifications that have occurred in the DOM environment.
 
 ## **CORS**
 
