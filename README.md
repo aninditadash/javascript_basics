@@ -1,3 +1,10 @@
+## Table of contents
+
+- [Introduction to Javascript](#introduction-to-javascript)
+  - [Syntax Parser](#syntax-parser)
+  - [Lexical Environment](#lexical-environment)
+
+
 ## Introduction to Javascript
 
 JavaScript is a lightweight, cross-platform, object-oriented scripting language used to make webpages interactive. It is an interpreted language that executes code line by line, providing more flexibility. It is single-threaded and dynamically typed and is used for client-side or server-side development. JavaScript code is run using the **V8 Engine** in the Chrome browser or **SpiderMonkey** in Firefox, etc. [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model] It provides the following features:
