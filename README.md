@@ -464,7 +464,7 @@ console.log(multiplyByTwo(5));
 
 In JavaScript, functions are categorized as pure or impure based on their adherence to two core principles: determinism and lack of side effects.
 
-- Pure Functions: are _Deterministic_, meaning given the same input arguments, a pure function will always produce the exact same output. It does not rely on any external state or variables that might change, and have _No Side Effects_.A side effect is any modification that a function makes to the state of the system or its environment outside of its scope.
+- __Pure Functions:__ are _Deterministic_, meaning given the same input arguments, a pure function will always produce the exact same output. It does not rely on any external state or variables that might change, and have _No Side Effects_.A side effect is any modification that a function makes to the state of the system or its environment outside of its scope.
 
 ```
 function add(a, b) {
@@ -473,7 +473,7 @@ function add(a, b) {
 console.log(add(3, 4));
 ```
 
-- Impure Functions: is a function that has side effects or does not always return the same output when given the same input. Side effects can include modifying a global variable, changing the state of an object, or making a network request.
+- __Impure Functions:__ is a function that has side effects or does not always return the same output when given the same input. Side effects can include modifying a global variable, changing the state of an object, or making a network request.
 
 ```
 let oldValue = 7;
