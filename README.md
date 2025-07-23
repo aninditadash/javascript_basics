@@ -60,11 +60,11 @@ __Byte Code vs Machine Code (Object code):__
 
 Byte code is an intermediate code between the source code and machine code. It is a low-level code that is the result of the compilation of a source code which is written in a high-level language.
 
--  Byte code is considered as the intermediate-level code and Machine Code as low-level code.
--  Byte code is a non-runnable code generated after compilation of source code and it relies on an interpreter to get executed.
--  Machine code is a set of instructions in machine language or in binary format and is directly executed by CPU.
-- Byte code is platform-independent as it is dependent on the virtual machine and the system having a virtual machine can be executed irrespective of the platform.
-- Machine code is not platform independent because the object code of one platform can not be run on the different OS. 
+- Byte code is considered as the intermediate-level code and Machine Code as low-level code.
+- Byte code is a non-runnable code generated after compilation of source code and it relies on an interpreter to get executed.
+- Machine code is a set of instructions in machine language or in binary format and is directly executed by CPU.
+- Byte code is platform-independent as it is dependent on the virtual machine and the system having a virtual machine can be executed irrespective of the platform/OS.
+- Machine code is not platform-independent because the object code of one platform can not be run on the different OS. Object code varies depending upon system architecture and native instructions associated with the machine.
 
 JavaScript is mainly interpreted, but modern JavaScript engines, like V8 in Google Chrome, use JIT (Just-In-Time) compilation to boost performance. They convert JavaScript code into optimized machine code right before it runs. This mix of interpretation and JIT compilation makes JavaScript fast and versatile for web applications.
 
