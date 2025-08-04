@@ -22,15 +22,8 @@ JavaScript is a lightweight, cross-platform, object-oriented scripting language 
 - **Server-side Support:** Node.js and frameworks like Express.js are widely used for server-side JavaScript, enabling full-stack development.
 - **Dynamic, interpreted, weakly typed language:** Dynamic Typing means that we don't tell the JavaScript engine what type of data a variable holds. Instead, it figures it out while the code is executing, so a single variable can hold different datatypes, at different times during code execution. Weakly typed means the datatypes of the variables are inferred automatically based on the type of value of value stored in it.
 
-### **Syntax Parser**
 
-A program that reads the code and determines what it does and if its grammar is valid. The programs like compilers and interpreters, read the code character by character and determine if the syntax is valid and then implementing that syntax in a way the computer can understand.
-
-### **Lexical Environment**
-
-Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
-
-### **Script loading strategies**
+## **Script loading strategies**
 
 `<script>` HTML element is used to embed executable code or data, typically used to embed or refer to JavaScript code. The JS script loading strategies determine how and when scripts are fetched and executed in a web page, impacting performance and user experience.
 
@@ -46,36 +39,6 @@ Where something sits physically in the code we write. Lexical means having to do
 - [Lodash](https://lodash.com/) - https://www.npmjs.com/package/lodash
 - [Axios](https://axios-http.com/docs/intro) -https://www.npmjs.com/package/axios
 
-## **How code is parsed and compiled in Javascript**
-
-__Interpreter:__ An interpreter translates code written in a high-level programming language into machine code line-by-line as the code runs.
-
-__Compiler:__  A compiler translates code from a high-level programming language into machine code before the program runs. The file produced by a compiler is often called a binary file or an executable file (byte code).
-
-__JIT Compiler:__ A JIT compiler converts code into byte code first. Then, at runtime, it changes the byte code into machine-readable code, which makes the program run faster.
-
-__Abstract Syntax Tree (AST):__ The AST is a hierarchical, tree-like representation of the code's structure, reflecting its syntax and relationships between different elements.
-
-__Byte Code vs Machine Code (Object code):__
-
-Byte code is an intermediate code between the source code and machine code. It is a low-level code that is the result of the compilation of a source code which is written in a high-level language.
-
-- Byte code is considered as the intermediate-level code and Machine Code as low-level code.
-- Byte code is a non-runnable code generated after compilation of source code and it relies on an interpreter to get executed.
-- Machine code is a set of instructions in machine language or in binary format and is directly executed by CPU.
-- Byte code is platform-independent as it is dependent on the virtual machine and the system having a virtual machine can be executed irrespective of the platform/OS.
-- Machine code is not platform-independent because the object code of one platform can not be run on the different OS. Object code varies depending upon system architecture and native instructions associated with the machine.
-
-JavaScript is mainly interpreted, but modern JavaScript engines, like V8 in Google Chrome, use JIT (Just-In-Time) compilation to boost performance. They convert JavaScript code into optimized machine code right before it runs. This mix of interpretation and JIT compilation makes JavaScript fast and versatile for web applications.
-
-- The engine first breaks down the raw JavaScript code into a stream of meaningful "tokens."
-- The tokens are then fed to a parser, which analyzes their grammatical structure and builds an AST, which also identifies syntax errors.
-- JS engine often uses an interpreter to convert the AST into an intermediate representation called bytecode. This bytecode is a lower-level, platform-independent representation of the code, designed for efficient execution.
-- Modern JavaScript engines employ JIT compilation to optimize performance. As the bytecode is executed by the interpreter, the JIT compiler identifies "hot" code sections (frequently executed parts) and compiles them into highly optimized, platform-specific machine code.
-- The compiled machine code (or interpreted bytecode for less frequently executed parts) is then executed by the JavaScript virtual machine.
-
-https://daily.dev/blog/javascript-interpreter-basics-for-developers
-
 ## **JavaScript Types**
 
 Primitive data types are the fundamental, predefined data types available in a programming language. They represent single, indivisible values and are the building blocks for more complex data structures. Common primitive types include integers, floating-point numbers, characters, booleans, and strings. Javascript has 7 primitive types:
@@ -88,8 +51,7 @@ Primitive data types are the fundamental, predefined data types available in a p
 - undefined: A top-level property whose value is not defined.
 - null: Represents the intentional absence of a value (A special keyword denoting a null value).
 
-##### __Note:__
-When trying to assign a value to a JS keyword gives `Syntax Error`.
+__Note:__ When trying to assign a value to a JS keyword gives `Syntax Error`.
 
 ```
 let undefined = 1;
@@ -102,32 +64,7 @@ let undefined = 1;
 - An object is a value in memory which is possibly referenced by an identifier. In JavaScript, objects are the only mutable values. Functions are, in fact, also objects with the additional capability of being callable. Mutable means their properties or elements can be modified after creation. When a reference value is assigned to a variable, the variable stores a reference (a memory address) to the actual object, which is stored in a separate area of memory (typically the heap). These variables are _accessed by Reference_.
 - When a reference variable is copied, only the reference (memory address) is copied, not the object itself. This means both the original and copied variables point to the same underlying object in memory. Changes made to the object through one variable will be reflected when accessing the object through the other variable.
 
-## **Memory Management in JavaScript**
 
-JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection). 
-The stack is used for static memory allocation (primitives, function calls), while the heap is used for dynamic memory allocation (objects, arrays).
-
-The memory lifecycle can be broken down into three main phases:
-
-1. Memory Allocation: When you create a variable, object, or function, the engine allocates memory to store the value. Primitives data types are stored directly in memory, i.e. typically allocated memory on the stack. For reference data types, the reference to the data is stored in memory, and the actual data is often stored on the heap.
-2. Memory Usage: Once memory is allocated, the JavaScript engine uses it as the program runs. When you reference variables, objects, or functions, the engine accesses the memory where the data is stored.
-3. Memory Deallocation: When a variable, object, or function is no longer in use, the memory allocated to it should be freed. The JS engine automatically determines when memory is no longer needed and deallocates it.
-
-### **Garbage Collection in JavaScript**
-
-Garbage collection is the automatic process of identifying and freeing memory that is no longer in use by the program.
-
-__References:__ GC algorithms rely mostly on the concept of reference. Within the context of memory management, an object is said to reference another object if the former has access to the latter (either implicitly or explicitly). For instance, a JavaScript object has a reference to its prototype (implicit reference) and to its properties values (explicit reference).
-
-__Reference-counting garbage collection:__ the JavaScript engine keeps track of how many references there are to an object. When the reference count reaches zero (i.e., no part of the program is referencing the object anymore), the object is eligible for garbage collection. There is a limitation when it comes to circular references, e.g. two objects are created with properties that reference one another, thus creating a cycle. After they go out of scope after function is completed, the reference-counting algorithm will not consider them reclaimable since each of the two objects has at least one reference pointing to them, resulting in neither of them being marked for garbage collection. Circular references are a common cause of memory leaks.
-
-__Mark-and-sweep algorithm:__ This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". This algorithm assumes the knowledge of a set of objects called roots. In JavaScript, the root is the global object. Periodically, the garbage collector will start from these roots, find all objects that are referenced from these roots, then all objects referenced from these, etc. Starting from the roots, the garbage collector will thus find all reachable objects and collect all non-reachable objects. Its effective in collecting circular references.
-
-### **Data structures aiding memory management**
-
-WeakMaps and WeakSets: are data structures whose APIs closely mirror their non-weak counterparts: Map and Set. WeakMap allows you to maintain a collection of key-value pairs, while WeakSet allows you to maintain a collection of unique values, both with performant addition, deletion, and querying.
-
-WeakMap and WeakSet got the name from the concept of _weakly held_ values. If `x` is weakly held by `y`, it means that although you can access the value of `x` via `y`, the mark-and-sweep algorithm won't consider `x` as reachable if nothing else _strongly holds_ to it.
 
 ## __Type Coercion vs Type Conversion__
 
@@ -744,7 +681,45 @@ __How it works for fetch requests:__
 - Promise returned by fetch() will reject on some errors (network error or a bad scheme). However, if the server responds with an error like 404, then `fetch()` fulfills with a `Response`, so we have to check the status before we can read the response body.
 - The `Response.status` property tells us the numerical status code, and the `Response.ok` property returns true if the status is in the 200 range (common pattern is to check value of ok and throw error if it is false).
 
+## **How code is parsed and compiled in Javascript**
+
+__Interpreter:__ An interpreter translates code written in a high-level programming language into machine code line-by-line as the code runs.
+
+__Compiler:__  A compiler translates code from a high-level programming language into machine code before the program runs. The file produced by a compiler is often called a binary file or an executable file (byte code).
+
+__JIT Compiler:__ A JIT compiler converts code into byte code first. Then, at runtime, it changes the byte code into machine-readable code, which makes the program run faster.
+
+__Abstract Syntax Tree (AST):__ The AST is a hierarchical, tree-like representation of the code's structure, reflecting its syntax and relationships between different elements.
+
+__Byte Code vs Machine Code (Object code):__
+
+Byte code is an intermediate code between the source code and machine code. It is a low-level code that is the result of the compilation of a source code which is written in a high-level language.
+
+- Byte code is considered as the intermediate-level code and Machine Code as low-level code.
+- Byte code is a non-runnable code generated after compilation of source code and it relies on an interpreter to get executed.
+- Machine code is a set of instructions in machine language or in binary format and is directly executed by CPU.
+- Byte code is platform-independent as it is dependent on the virtual machine and the system having a virtual machine can be executed irrespective of the platform/OS.
+- Machine code is not platform-independent because the object code of one platform can not be run on the different OS. Object code varies depending upon system architecture and native instructions associated with the machine.
+
+JavaScript is mainly interpreted, but modern JavaScript engines, like V8 in Google Chrome, use JIT (Just-In-Time) compilation to boost performance. They convert JavaScript code into optimized machine code right before it runs. This mix of interpretation and JIT compilation makes JavaScript fast and versatile for web applications.
+
+- The engine first breaks down the raw JavaScript code into a stream of meaningful "tokens."
+- The tokens are then fed to a parser, which analyzes their grammatical structure and builds an AST, which also identifies syntax errors.
+- JS engine often uses an interpreter to convert the AST into an intermediate representation called bytecode. This bytecode is a lower-level, platform-independent representation of the code, designed for efficient execution.
+- Modern JavaScript engines employ JIT compilation to optimize performance. As the bytecode is executed by the interpreter, the JIT compiler identifies "hot" code sections (frequently executed parts) and compiles them into highly optimized, platform-specific machine code.
+- The compiled machine code (or interpreted bytecode for less frequently executed parts) is then executed by the JavaScript virtual machine.
+
+https://daily.dev/blog/javascript-interpreter-basics-for-developers
+
 ## **Execution Context**
+
+### **Syntax Parser**
+
+A program that reads the code and determines what it does and if its grammar is valid. The programs like compilers and interpreters, read the code character by character and determine if the syntax is valid and then implementing that syntax in a way the computer can understand.
+
+### **Lexical Environment**
+
+Where something sits physically in the code we write. Lexical means having to do with words or grammar. A lexical environment exists in programming languges in which where you write something is important. For ex, a function, with a variable defined inside of it. This variable sits lexically inside the function, but lexical environment tells that where this variable sits in the computer's memory and how it will interact with other variables and functions and elements of the program.
 
 A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
 
@@ -810,3 +785,30 @@ Variable environment is where the variables live that are created and how they r
 - Now, we have commented `myVar` declaration in `b`, and trying to print its value. When `b()` is invoked, `myVar` is 1, meaning its value is referred from the GEC (so outer environment of `b` is GEC). This is because, lexically `b` sits on top of the global environment (i.e. function declared at global level and not inside `a`).
 - This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
 - However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
+
+## **Memory Management in JavaScript**
+
+JavaScript automatically allocates memory when objects are created and frees it when they are not used anymore (garbage collection). 
+The stack is used for static memory allocation (primitives, function calls), while the heap is used for dynamic memory allocation (objects, arrays).
+
+The memory lifecycle can be broken down into three main phases:
+
+1. Memory Allocation: When you create a variable, object, or function, the engine allocates memory to store the value. Primitives data types are stored directly in memory, i.e. typically allocated memory on the stack. For reference data types, the reference to the data is stored in memory, and the actual data is often stored on the heap.
+2. Memory Usage: Once memory is allocated, the JavaScript engine uses it as the program runs. When you reference variables, objects, or functions, the engine accesses the memory where the data is stored.
+3. Memory Deallocation: When a variable, object, or function is no longer in use, the memory allocated to it should be freed. The JS engine automatically determines when memory is no longer needed and deallocates it.
+
+### **Garbage Collection in JavaScript**
+
+Garbage collection is the automatic process of identifying and freeing memory that is no longer in use by the program.
+
+__References:__ GC algorithms rely mostly on the concept of reference. Within the context of memory management, an object is said to reference another object if the former has access to the latter (either implicitly or explicitly). For instance, a JavaScript object has a reference to its prototype (implicit reference) and to its properties values (explicit reference).
+
+__Reference-counting garbage collection:__ the JavaScript engine keeps track of how many references there are to an object. When the reference count reaches zero (i.e., no part of the program is referencing the object anymore), the object is eligible for garbage collection. There is a limitation when it comes to circular references, e.g. two objects are created with properties that reference one another, thus creating a cycle. After they go out of scope after function is completed, the reference-counting algorithm will not consider them reclaimable since each of the two objects has at least one reference pointing to them, resulting in neither of them being marked for garbage collection. Circular references are a common cause of memory leaks.
+
+__Mark-and-sweep algorithm:__ This algorithm reduces the definition of "an object is no longer needed" to "an object is unreachable". This algorithm assumes the knowledge of a set of objects called roots. In JavaScript, the root is the global object. Periodically, the garbage collector will start from these roots, find all objects that are referenced from these roots, then all objects referenced from these, etc. Starting from the roots, the garbage collector will thus find all reachable objects and collect all non-reachable objects. Its effective in collecting circular references.
+
+### **Data structures aiding memory management**
+
+WeakMaps and WeakSets: are data structures whose APIs closely mirror their non-weak counterparts: Map and Set. WeakMap allows you to maintain a collection of key-value pairs, while WeakSet allows you to maintain a collection of unique values, both with performant addition, deletion, and querying.
+
+WeakMap and WeakSet got the name from the concept of _weakly held_ values. If `x` is weakly held by `y`, it means that although you can access the value of `x` via `y`, the mark-and-sweep algorithm won't consider `x` as reachable if nothing else _strongly holds_ to it.
