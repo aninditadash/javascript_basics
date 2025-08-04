@@ -558,11 +558,10 @@ const obj = {
 
 Namespace: A container to hold variables and functions. Typically used to keep variables and functions with the same name separate. JS does not have the concept of namespaces.
 
-__Spread Syntax:__ The spread `(...)`obje syntax allows an iterable, such as an array or string, to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected. In an object literal, the spread syntax enumerates the properties of an object and adds the key-value pairs to the object being created.
+__Spread Syntax:__ that allows the expansion of an iterable (like an array or string) or an object into individual elements or properties. 
 
-- Spread syntax looks exactly like rest syntax. In a way, spread syntax is the opposite of rest syntax.
+- Spread syntax looks like rest parameters syntax. In a way, spread syntax is the opposite of rest.
 - Spread syntax "expands" an array into its elements, while rest syntax collects multiple elements and "condenses" them into a single element.
-- 3 distinct places that accept the spread syntax: Function arguments list, Array literals and Object literals.
 - It creates a _shallow copy of arrays and objects_.
 
 ```
