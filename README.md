@@ -76,73 +76,6 @@ JavaScript is mainly interpreted, but modern JavaScript engines, like V8 in Goog
 
 https://daily.dev/blog/javascript-interpreter-basics-for-developers
 
-## **Execution Context**
-
-A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
-
-### **Global Environment and the Global Object**
-
-Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine (here Base is the GEC). By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
-
-### **Execution context - Creation, Hoisting and Execution**
-
-_JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. 
-- The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code, is because the execution context is created in two phases.
-- The first phase is called the creation phase. In that phase we know that the global object is set up within memory i.e. `window` object and `this` within the global execution context.
-- However, there's an outer environment that's created in that creation phase.
-- The syntax parser runs through your code and recognizes the variables and functions that are created. So, a memory space is setup for those variables and functions and this step is called as __Hoisting__.
-- It's not actually moving code to the top of the page.
-- So those functions and variables exist in memory, where the function in its entirety is placed into memory space, where as for the variables, since JavaScript engine doesn't know its value until it starts executing its code, it puts a placeholder called `undefined`.
-- All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
-- The second phase is the execution phase, where the code is run line by line and the variables whose values were undefined in the creation phase are now assigned proper values in memory.
-
-### **Function Invocation and Execution Stack**
-
-```
-function b() {}
-
-function a() {
-  b();
-}
-
-a();
-var d;
-```
-- When above code is put in a JavaScript file, a Global Execution Context will be created along with variable `this` and global object (`window` in case of browser) and attach these functions to it.
-- It will set up the memory space for them in the creation phase of the execution context.
-- However, when `a()` is invoked, a new execution context is created and placed on top of the execution stack.
-- So, anytime a function is executed or invoked in JavaScript, a new execution context is created (goes through creation phase similar to GEC) and put on the execution stack having it's own space for variables and functions including the `this` variable for that execution context.
-- So, when `b()` is invoked, yet another execution context is created and placed on top of `a`'s execution context. Here, since `b()` is called inside `a()`, `a`'s execution context is dependent on `b()`'s function completion. 
-- When `b()` finishes, then its removed from the execution stack, and same goes for `a()`.
-- The order of the code surrounding those functions lexically doesn't matter, e.g. if lexically `a` is above `b`, both of those functions are already in memory during the create phase of the initial GEC.
-
-### **Functions, Execution Context, Variable Environments and the Scope Chain**
-
-```
-function b() {
-  // var myVar;
-  console.log(myVar);
-}
-
-function a() {
-  var myVar = 2;
-  b();
-}
-
-var myVar = 1;
-a();
-```
-
-Variable environment is where the variables live that are created and how they relate to each other in memory. Let's find out the value of `myVar` at any point in time.
-
-- When above code is run, a GEC is created and bottom `myVar` (value = 1) is put into global memory space.
-- When `a()` is invoked, a new EC is created and `myVar` (value = 2) is put in that execution context's variable environment.
-- So, every EC has its own variable environment, which is created a function is invoked including a reference to the outer environment.
-- So, similarly, this process occurs when `b()` is invoked. Here, `myVar` has value `undefined`.
-- Now, we have commented `myVar` declaration in `b`, and trying to print its value. When `b()` is invoked, `myVar` is 1, meaning its value is referred from the GEC (so outer environment of `b` is GEC). This is because, lexically `b` sits on top of the global environment (i.e. function declared at global level and not inside `a`).
-- This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
-- However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
-
 ## **JavaScript Types**
 
 Primitive data types are the fundamental, predefined data types available in a programming language. They represent single, indivisible values and are the building blocks for more complex data structures. Common primitive types include integers, floating-point numbers, characters, booleans, and strings. Javascript has 7 primitive types:
@@ -804,10 +737,76 @@ Whether a request can be made cross-origin or not is determined by the value of 
 - Setting mode to _same-origin_ disallows cross-origin requests completely.
 - Setting mode to _no-cors_ disables CORS for cross-origin requests. This restricts the headers that may be set, and restricts methods to GET, HEAD, and POST.
 
-
 __How it works for fetch requests:__
 
 - For simple requests (i.e. requests which will always be sent), the server must respond with the correct [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) header or the browser will not share the response with the caller.
 - Unlike simple requests, the browser will send a preflighted request to check that the server understands CORS and allows the request, and the real request will not be sent unless the server responds to the preflighted request with the appropriate CORS headers.
 - Promise returned by fetch() will reject on some errors (network error or a bad scheme). However, if the server responds with an error like 404, then `fetch()` fulfills with a `Response`, so we have to check the status before we can read the response body.
 - The `Response.status` property tells us the numerical status code, and the `Response.ok` property returns true if the status is in the 200 range (common pattern is to check value of ok and throw error if it is false).
+
+## **Execution Context**
+
+A wrapper to help manage the code that is running. There are lots of lexical environments, but the one which is currently running is managed via execution contexts.
+
+### **Global Environment and the Global Object**
+
+Whenever code is run in JavaScript, it's run inside an execution context and its the _Base execution context_ created by the JS Engine (here Base is the GEC). By default, when JS code is run (in a browser), the _Global Execution context_ is created which creates two things: a _Global Object_ `window` object and `this` variable which refers to the global window object. When you create variables and functions, and you're not inside a function, those variables and functions get attached to the global object.
+
+### **Execution context - Creation, Hoisting and Execution**
+
+_JavaScript Hoisting_ refers to the process whereby the interpreter appears to move the declaration of functions, variables, classes, or imports to the top of their scope, prior to execution of the code. 
+- The reason JavaScript behaves this way where the variables and functions are to some degree available even though they're written later in the code, is because the execution context is created in two phases.
+- The first phase is called the creation phase. In that phase we know that the global object is set up within memory i.e. `window` object and `this` within the global execution context.
+- However, there's an outer environment that's created in that creation phase.
+- The syntax parser runs through your code and recognizes the variables and functions that are created. So, a memory space is setup for those variables and functions and this step is called as __Hoisting__.
+- It's not actually moving code to the top of the page.
+- So those functions and variables exist in memory, where the function in its entirety is placed into memory space, where as for the variables, since JavaScript engine doesn't know its value until it starts executing its code, it puts a placeholder called `undefined`.
+- All variables in JavaScript are initially set to undefined, and functions are sitting in memory in their entirety.
+- The second phase is the execution phase, where the code is run line by line and the variables whose values were undefined in the creation phase are now assigned proper values in memory.
+
+### **Function Invocation and Execution Stack**
+
+```
+function b() {}
+
+function a() {
+  b();
+}
+
+a();
+var d;
+```
+- When above code is put in a JavaScript file, a Global Execution Context will be created along with variable `this` and global object (`window` in case of browser) and attach these functions to it.
+- It will set up the memory space for them in the creation phase of the execution context.
+- However, when `a()` is invoked, a new execution context is created and placed on top of the execution stack.
+- So, anytime a function is executed or invoked in JavaScript, a new execution context is created (goes through creation phase similar to GEC) and put on the execution stack having it's own space for variables and functions including the `this` variable for that execution context.
+- So, when `b()` is invoked, yet another execution context is created and placed on top of `a`'s execution context. Here, since `b()` is called inside `a()`, `a`'s execution context is dependent on `b()`'s function completion. 
+- When `b()` finishes, then its removed from the execution stack, and same goes for `a()`.
+- The order of the code surrounding those functions lexically doesn't matter, e.g. if lexically `a` is above `b`, both of those functions are already in memory during the create phase of the initial GEC.
+
+### **Functions, Execution Context, Variable Environments and the Scope Chain**
+
+```
+function b() {
+  // var myVar;
+  console.log(myVar);
+}
+
+function a() {
+  var myVar = 2;
+  b();
+}
+
+var myVar = 1;
+a();
+```
+
+Variable environment is where the variables live that are created and how they relate to each other in memory. Let's find out the value of `myVar` at any point in time.
+
+- When above code is run, a GEC is created and bottom `myVar` (value = 1) is put into global memory space.
+- When `a()` is invoked, a new EC is created and `myVar` (value = 2) is put in that execution context's variable environment.
+- So, every EC has its own variable environment, which is created a function is invoked including a reference to the outer environment.
+- So, similarly, this process occurs when `b()` is invoked. Here, `myVar` has value `undefined`.
+- Now, we have commented `myVar` declaration in `b`, and trying to print its value. When `b()` is invoked, `myVar` is 1, meaning its value is referred from the GEC (so outer environment of `b` is GEC). This is because, lexically `b` sits on top of the global environment (i.e. function declared at global level and not inside `a`).
+- This entire act of searching a variable in the chain of references to outer environments, is called the __Scope Chain__. Scope means, where we can access a variable, and the chain is those links of outer environment references. The outer environment is dependent on the Lexical environment, that is where it was physically written in your code.
+- However, if `b` was declared inside `a`, then the EC(b)'s reference outer environment will be  `a` and `myVar` will be 2.
