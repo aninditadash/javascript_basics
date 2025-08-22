@@ -39,6 +39,16 @@ JavaScript is a lightweight, cross-platform, object-oriented scripting language 
 - [Lodash](https://lodash.com/) - https://www.npmjs.com/package/lodash
 - [Axios](https://axios-http.com/docs/intro) -https://www.npmjs.com/package/axios
 
+## **Difference between Debouncing and Throttling**
+
+Debouncing and throttling are techniques in JavaScript used to control the frequency at which a function is executed, particularly in response to events that fire rapidly, such as onchange. They help optimize performance and improve user experience by preventing excessive function calls.
+
+Debouncing ensures that a function is only executed after a specified period of inactivity following a series of rapid calls. It delays the execution of the function until a certain amount of time has passed since the last time it was invoked. 
+
+Throttling ensures that a function is executed at most once within a specified time interval, regardless of how many times it is called during that interval. It limits the rate at which a function can be invoked. 
+
+https://www.geeksforgeeks.org/javascript/difference-between-debouncing-and-throttling/
+
 ## **JavaScript Types**
 
 Primitive data types are the fundamental, predefined data types available in a programming language. They represent single, indivisible values and are the building blocks for more complex data structures. Common primitive types include integers, floating-point numbers, characters, booleans, and strings. Javascript has 7 primitive types:
